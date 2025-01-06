@@ -30,6 +30,13 @@ local Window = Rayfield:CreateWindow({
    }
 })
 
+Rayfield:Notify({
+   Title = "Hi! Thanks For Use",
+   Content = "Hello! Thanks For Use This Script!",
+   Duration = 6.5,
+   Image = "rewind",
+})
+
 local Tab = Window:CreateTab("Basic", 4483362458) -- Title, Image
 local Tab2 = Window:CreateTab("Prison Life", 4483345998) -- Pestaña Prison Life
 local Tab3 = Window:CreateTab("FPS", 15862513462) -- Pestaña FPS
@@ -620,7 +627,7 @@ local humanoid = character:WaitForChild("Humanoid")
 local bodyVelocity
 
 local Toggle = Tab:CreateToggle({
-   Name = "Crazy Foat",
+   Name = "Crazy Fly",
    CurrentValue = false,
    Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
