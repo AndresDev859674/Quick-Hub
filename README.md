@@ -19,5 +19,5 @@ There may be many resources in the game (depending on the power of the PC and th
 3. Now Test the Game https://www.roblox.com/es/games/4483381587/a-literal-baseplate
 
 ```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Scripts-Hub/main/main.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Scripts-Hub-V2/main/main.lua"))()
 ````
