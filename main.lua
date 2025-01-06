@@ -566,6 +566,13 @@ local Button = Tab4:CreateButton({
    end,
 })
 
+local Button = Tab:CreateButton({
+   Name = "Reviz Admin",
+   Callback = function()
+      loadstring(game:HttpGet("https://github.com/kr4sk/Reviz-admin/raw/refs/heads/main/Reviz-admin.lua"))()
+   end,
+})
+
 local Button = Tab4:CreateButton({
    Name = "Azure Modded",
    Callback = function()
@@ -675,3 +682,22 @@ game:GetService("UserInputService").InputBegan:Connect(function(input)
         end
     end
 end)
+
+
+local Toggle = Tab:CreateToggle({
+    Name = "Force Field (invincible)",
+    CurrentValue = false,
+    Flag = "ForcefieldToggle", -- Un identificador único
+    Callback = function(Value)
+        if Value then
+            -- Crear el campo de fuerza
+            local forcefield = Instance.new("ForceField")
+            forcefield.Parent = game.Players.LocalPlayer.Character
+        else
+            -- Eliminar el campo de fuerza
+            if game.Players.LocalPlayer.Character:FindFirstChild("ForceField") then
+                game.Players.LocalPlayer.Character.ForceField:Destroy()
+            end
+        end
+    end,
+})
