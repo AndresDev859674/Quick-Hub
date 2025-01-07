@@ -8,7 +8,7 @@ This is the latest Quick Scripts Hub!
 
 ## WARNING ⚠️
 
-This Script has a lot of Potential, You can Get Banned in Games for example, Roblox RIVALS (for aimbot and esp and walkspeed and fly) etc, you have to be careful, at least you can hack games that are not protected for example Prison Life, a chaotic hacker game, Thanks For Reading!
+This script has a lot of potential it's not for enhancing games for more fun just hacking fun, you can get banned in games for example Roblox RIVALS (for aimbot and esp and walkspeed and fly) etc, you should be careful, at least you can hack games that are not protected for example Prison Life a chaotic hacker game, Thanks for reading!
 
 ## Recomended Games 🚀
 
