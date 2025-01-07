@@ -6,6 +6,13 @@ This is the latest Quick Scripts Hub!
 
 ![Quick Scripts Hub](https://raw.githubusercontent.com/AndresDev859674/Quick-Scripts-Hub-V2/refs/heads/main/game.png)
 
+## WARNING ⚠️
+
+This Script has a lot of Potential, You can Get Banned in Games for example, Roblox RIVALS (for aimbot and esp and walkspeed and fly) etc, you have to be careful, at least you can hack games that are not protected for example Prison Life, a chaotic hacker game, Thanks For Reading!
+
+## Recomended Games 🚀
+
+[Prison Life](https://www.roblox.com/es/games/155615604/Prison-Life) [A Literal Baseplate](https://www.roblox.com/es/games/4483381587/a-literal-baseplate) [Natural Disaster](https://www.roblox.com/es/games/189707/Natural-Disaster-Survival) And More Games to Exploiting
 
 ## What Is Quick Scripts Hub? 🤔
 
