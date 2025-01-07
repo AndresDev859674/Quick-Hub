@@ -1,8 +1,10 @@
+print("Running Quick Scripts Hub V2.....")
+
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/SiriusSoftwareLtd/Rayfield/main/source.lua'))()
 
 local Window = Rayfield:CreateWindow({
    Name = "Quick Scripts Hub V2",
-   Icon = 0, -- Icono para la ventana
+   Icon = "mouse-pointer-click", -- Icono para la ventana
    LoadingTitle = "Loading Quick Scripts Hub",
    LoadingSubtitle = "by Andres & Luisito",
    Theme = "Default",
@@ -13,6 +15,47 @@ local Window = Rayfield:CreateWindow({
       FolderName = "OrionTest",
       FileName = "Big Hub"
    },
+   {
+    TextColor = Color3.fromRGB(240, 240, 240),
+
+    Background = Color3.fromRGB(25, 25, 25),
+    Topbar = Color3.fromRGB(34, 34, 34),
+    Shadow = Color3.fromRGB(20, 20, 20),
+
+    NotificationBackground = Color3.fromRGB(20, 20, 20),
+    NotificationActionsBackground = Color3.fromRGB(230, 230, 230),
+
+    TabBackground = Color3.fromRGB(80, 80, 80),
+    TabStroke = Color3.fromRGB(85, 85, 85),
+    TabBackgroundSelected = Color3.fromRGB(210, 210, 210),
+    TabTextColor = Color3.fromRGB(240, 240, 240),
+    SelectedTabTextColor = Color3.fromRGB(50, 50, 50),
+
+    ElementBackground = Color3.fromRGB(35, 35, 35),
+    ElementBackgroundHover = Color3.fromRGB(40, 40, 40),
+    SecondaryElementBackground = Color3.fromRGB(25, 25, 25),
+    ElementStroke = Color3.fromRGB(50, 50, 50),
+    SecondaryElementStroke = Color3.fromRGB(40, 40, 40),
+            
+    SliderBackground = Color3.fromRGB(50, 138, 220),
+    SliderProgress = Color3.fromRGB(50, 138, 220),
+    SliderStroke = Color3.fromRGB(58, 163, 255),
+
+    ToggleBackground = Color3.fromRGB(30, 30, 30),
+    ToggleEnabled = Color3.fromRGB(0, 146, 214),
+    ToggleDisabled = Color3.fromRGB(100, 100, 100),
+    ToggleEnabledStroke = Color3.fromRGB(0, 170, 255),
+    ToggleDisabledStroke = Color3.fromRGB(125, 125, 125),
+    ToggleEnabledOuterStroke = Color3.fromRGB(100, 100, 100),
+    ToggleDisabledOuterStroke = Color3.fromRGB(65, 65, 65),
+
+    DropdownSelected = Color3.fromRGB(40, 40, 40),
+    DropdownUnselected = Color3.fromRGB(30, 30, 30),
+
+    InputBackground = Color3.fromRGB(30, 30, 30),
+    InputStroke = Color3.fromRGB(65, 65, 65),
+    PlaceholderColor = Color3.fromRGB(178, 178, 178)
+},
    Discord = {
       Enabled = false,
       Invite = "noinvitelink",
@@ -38,17 +81,22 @@ Rayfield:Notify({
 })
 
 local Tab = Window:CreateTab("Basic", 4483362458) -- Title, Image
-local Tab2 = Window:CreateTab("Prison Life", 4483345998) -- Pestaña Prison Life
+local Tab2 = Window:CreateTab("Prison Life", "swords") -- Pestaña Prison Life
 local Tab3 = Window:CreateTab("FPS", 15862513462) -- Pestaña FPS
 local Tab4 = Window:CreateTab("Roblox Rivals", 15862513462) -- Pestaña Roblox Rivals
-local TabHelp = Window:CreateTab("Help", 4483345998) -- Pestaña Compatibility
-local TabClient = Window:CreateTab("Client", 4483345998) -- Pestaña Client
+local TabUser = Window:CreateTab("My Profile", "user") -- User
+local TabHelp = Window:CreateTab("Help", "info") -- Pestaña Compatibility
+local TabClient = Window:CreateTab("Client", "bolt") -- Pestaña Client
 
 -- Etiquetas (labels)
 Tab2:CreateLabel("Recommended For The Most Chaotic Game Prison Life")
 Tab3:CreateLabel("Recommended for Shooting and Battle Games etc.")
 TabClient:CreateLabel("Quick Scripts Hub Options and Experiments")
 Tab:CreateLabel("Welcome to Quick Scripts, Select a Button (script)")
+local player = game.Players.LocalPlayer
+local username = player.Name
+local Label = TabUser:CreateLabel("Username: " .. username)
+local Paragraph = TabUser:CreateParagraph({Title = "Thanks To Use Quick Scripts Hub!", Content = "Thanks for use"})
 local Paragraph = Tab:CreateParagraph({Title = "Thanks To Use The V2!", Content = "Thanks for Use this New Quick Scripts Hub"})
 local Paragraph = TabHelp:CreateParagraph({Title = "Quick Scripts Hub V2 25.2.0.0", Content = "Your Version is 25.2.0.0, This Hub is A V2 (lastest Version)"})
 local Paragraph = TabHelp:CreateParagraph({Title = "How To Use", Content = "Select A Button and Toggles and Sliders a Textboxs To Make Some Behaviors"})
@@ -128,6 +176,8 @@ local Button = Tab:CreateButton({
    end,
 })
 
+local Divider2 = Tab:CreateDivider("Player")
+
 local Slider = Tab:CreateSlider({
    Name = "Walkspeed",
    Range = {16, 650},
@@ -180,7 +230,7 @@ local Input = Tab:CreateInput({
    RemoveTextAfterFocusLost = false,
    Flag = "Input1",
    Callback = function(Text)
-        local numValue = tonumber(Value) -- Convierte el texto a número
+        local numValue = tonumber(Text) -- Convierte el texto a número
         if numValue and numValue > 0 then
             game.Players.LocalPlayer.Character.Humanoid.JumpPower = numValue
         else
@@ -193,6 +243,7 @@ local Input = Tab:CreateInput({
         end
    end,
 })
+
 
 local FlyEnabled = false
 local FlySpeed = 5
@@ -285,7 +336,7 @@ local Input = Tab:CreateInput({
    RemoveTextAfterFocusLost = false,
    Flag = "Input1",
    Callback = function(Text)
-        local numValue = tonumber(Value) -- Convierte el texto a número
+        local numValue = tonumber(Text) -- Convierte el texto a número
         if numValue and numValue > 0 then
             FlySpeed = numValue -- Asigna el valor al control de velocidad
         else
@@ -421,7 +472,7 @@ local Input = Tab:CreateInput({
    RemoveTextAfterFocusLost = false,
    Flag = "Input1",
    Callback = function(Text)
-        local numValue = tonumber(Value) -- Convierte el texto a número
+        local numValue = tonumber(Text) -- Convierte el texto a número
         if numValue and numValue > 0 then
             FloatSpeed = numValue -- Asigna el valor al control de velocidad flotante
         else
@@ -603,7 +654,7 @@ local Input = Tab:CreateInput({
    RemoveTextAfterFocusLost = false,
    Flag = "Input1",
    Callback = function(Text)
-        local healthValue = tonumber(Value) -- Convertir el valor ingresado a número
+        local healthValue = tonumber(Text) -- Convertir el valor ingresado a número
         if healthValue and healthValue > 0 then
             local player = game.Players.LocalPlayer
             local character = player.Character
@@ -682,3 +733,177 @@ game:GetService("UserInputService").InputBegan:Connect(function(input)
         end
     end
 end)
+
+local gravity = 9.8
+
+local Slider = Tab:CreateSlider({
+   Name = "Gravity",
+   Range = {0, 200},
+   Increment = 5,
+   Suffix = "G",
+   CurrentValue = gravity,
+   Flag = "GravitySlider",
+   Callback = function(Value)
+      gravity = Value -- Ajusta la variable de gravedad
+      -- Aquí puedes actualizar cualquier aspecto de tu juego que dependa de la gravedad
+      workspace.Gravity = gravity -- Por ejemplo, actualizar la gravedad del workspace
+      print("Valor de la gravedad ajustado a:", gravity)
+   end,
+})
+
+local ESPEnabled = false
+
+local function CreateESP(player)
+    local function CreateHighlight()
+        local highlight = Instance.new("Highlight")
+        highlight.Adornee = player.Character
+        highlight.Parent = player.Character
+        highlight.FillTransparency = 0.5
+        highlight.OutlineTransparency = 0 -- Hace visible el contorno a través de las paredes
+        
+        local teamColor = Color3.fromRGB(255, 255, 255) -- Color por defecto (blanco)
+        if player.Team then
+            teamColor = player.Team.TeamColor.Color
+        end
+        highlight.FillColor = teamColor
+
+        return highlight
+    end
+
+    local function CreateBillboard()
+        local head = player.Character:WaitForChild("Head", 10)
+        if head then
+            local billboard = Instance.new("BillboardGui")
+            billboard.Adornee = head
+            billboard.Size = UDim2.new(0, 200, 0, 50) -- Ajusta el tamaño si es necesario
+            billboard.StudsOffset = Vector3.new(0, 5, 0) -- Más arriba
+            billboard.AlwaysOnTop = true
+            
+            local label = Instance.new("TextLabel")
+            label.Parent = billboard
+            label.Size = UDim2.new(1, 0, 1, 0)
+            label.BackgroundTransparency = 1 -- Fondo transparente
+            label.TextColor3 = Color3.fromRGB(255, 255, 255) -- Color por defecto (blanco)
+            label.TextStrokeTransparency = 0
+            label.TextWrapped = true
+            label.TextScaled = true
+
+            return billboard, label
+        else
+            warn("No se pudo encontrar la cabeza del jugador.")
+            return nil, nil
+        end
+    end
+
+    local highlight = CreateHighlight()
+    local billboard, label = CreateBillboard()
+    if not billboard then return end
+    
+    local startTime = tick()
+
+    local function UpdateLabel()
+        if player.Character and player.Character:FindFirstChild("Humanoid") then
+            local humanoid = player.Character.Humanoid
+            local distance = (player.Character.PrimaryPart.Position - game.Players.LocalPlayer.Character.PrimaryPart.Position).Magnitude
+            local heldItem = "None"
+            
+            if player.Character:FindFirstChildOfClass("Tool") then
+                heldItem = player.Character:FindFirstChildOfClass("Tool").Name
+            end
+
+            local timeElapsed = tick() - startTime
+
+            label.Text = string.format("Name: %s / Health: %.0f%% / Studs: %.0f / Item: %s / Time: %.0f s", player.Name, humanoid.Health / humanoid.MaxHealth * 100, distance, heldItem, timeElapsed)
+        end
+    end
+
+    game:GetService("RunService").RenderStepped:Connect(UpdateLabel)
+    
+    billboard.Parent = player.Character
+end
+
+local function RemoveESP(player)
+    if player.Character then
+        for _, v in pairs(player.Character:GetChildren()) do
+            if v:IsA("Highlight") or v:IsA("BillboardGui") then
+                v:Destroy()
+            end
+        end
+    end
+end
+
+local function ToggleESP(enable)
+    ESPEnabled = enable
+    if ESPEnabled then
+        for _, player in pairs(game.Players:GetPlayers()) do
+            if player ~= game.Players.LocalPlayer then
+                CreateESP(player)
+                player.CharacterAdded:Connect(function()
+                    if ESPEnabled then
+                        CreateESP(player)
+                    end
+                end)
+            end
+        end
+        print("ESP activado")
+    else
+        for _, player in pairs(game.Players:GetPlayers()) do
+            RemoveESP(player)
+        end
+        print("ESP desactivado")
+    end
+end
+
+local Toggle = Tab:CreateToggle({
+    Name = "ESP",
+    CurrentValue = ESPEnabled,
+    Flag = "ESPToggle",
+    Callback = function(Value)
+        ToggleESP(Value)
+    end,
+})
+
+game.Players.PlayerAdded:Connect(function(player)
+    if ESPEnabled then
+        CreateESP(player)
+        player.CharacterAdded:Connect(function()
+            if ESPEnabled then
+                CreateESP(player)
+            end
+        end)
+    end
+end)
+
+game.Players.PlayerRemoving:Connect(function(player)
+    RemoveESP(player)
+end)
+
+-- Variables
+local InfiniteJumpEnabled = false
+
+-- Toggle for Infinite Jump
+local Toggle = Tab:CreateToggle({
+    Name = "Enable Infinite Jump",
+    CurrentValue = false,
+    Flag = "ToggleInfiniteJump",
+    Callback = function(Value)
+        InfiniteJumpEnabled = Value
+        print(InfiniteJumpEnabled and "Infinite Jump Enabled" or "Infinite Jump Disabled")
+    end,
+})
+
+-- Infinite Jump Function
+local function onJumpRequest()
+    if InfiniteJumpEnabled then
+        local player = game.Players.LocalPlayer
+        local character = player.Character
+        if character and character:FindFirstChildOfClass("Humanoid") then
+            character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Jumping)
+        end
+    end
+end
+
+-- Connect Infinite Jump to Heartbeat to ensure it works continuously
+game:GetService("RunService").Heartbeat:Connect(onJumpRequest)
+
+
