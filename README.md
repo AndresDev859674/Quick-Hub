@@ -1,24 +1,35 @@
 # Quick Scripts Hub V2 📌
-A Universal Script That Can Run Any Behavior and Script Without Searching in Bing and Google
 
-This is The Lastest Quick Scripts Hub!.
+🎮 **A Universal Script That Can Run Any Behavior and Script Without Searching in Bing and Google**
 
-## What Is Quick Scripts Hub?
+This is the latest Quick Scripts Hub!
 
-It's a quick script picker without having to go to the browser to search for a script, But the updates are quite slow to come out, Quick Scripts Hub has so much potential (strong roblox scripts) that they can destroy the game or ban you, they are not scripts that improve the game they are scripts that destroy the game, you can go to the Github page https://github.com/AndresDev859674/Quick-Scripts-Hub-V2 To the Issues Tab to Report a Bug or Request a Script to the Creator.
+![Quick Scripts Hub](https://raw.githubusercontent.com/AndresDev859674/Quick-Scripts-Hub-V2/refs/heads/main/game.png)
 
-## Some scripts do not appear in the menu?
 
-There may be many resources in the game (depending on the power of the PC and the phone)
+## What Is Quick Scripts Hub? 🤔
 
-## How to run the script?
+Quick Scripts Hub is a quick script picker that lets you select and run scripts without needing to search the browser. However, updates are quite slow to come out. Quick Scripts Hub has immense potential (with strong Roblox scripts) that can either enhance or destroy the game, or even get you banned. Note that these are not game-improving scripts; they are scripts that can potentially disrupt the game. You can visit the [GitHub page](https://github.com/AndresDev859674/Quick-Scripts-Hub-V2) to report bugs or request scripts from the creator through the Issues tab.
+
+## Some Scripts Do Not Appear in the Menu? ❓
+
+There might be too many resources in the game (depending on the power of your PC or phone).
+
+## Contains the Rayfield Library
+
+With the most modern Roblox library
+
+https://github.com/SiriusSoftwareLtd/Rayfield/tree/main
+
+[![rayfield](https://user-images.githubusercontent.com/77512805/197843157-3485a6e4-7b18-4372-8277-f3a2e7bd0317.png)](https://sirius.menu/discord)
+
+## How to Run the Script? 🚀
 
 1. Download JJSploit or Solara (PC only).
 2. Run this script:
-
-3. Now Test the Game https://www.roblox.com/es/games/4483381587/a-literal-baseplate
+3. Test the Script with this Game: [Test Game](https://www.roblox.com/es/games/4483381587/a-literal-baseplate)
 
 ```lua
 local scriptContent = game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Scripts-Hub-V2/main/main.lua")
 loadstring(scriptContent)()
-````
+
