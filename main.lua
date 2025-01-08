@@ -15,47 +15,6 @@ local Window = Rayfield:CreateWindow({
       FolderName = "OrionTest",
       FileName = "Big Hub"
    },
-   {
-    TextColor = Color3.fromRGB(240, 240, 240),
-
-    Background = Color3.fromRGB(25, 25, 25),
-    Topbar = Color3.fromRGB(34, 34, 34),
-    Shadow = Color3.fromRGB(20, 20, 20),
-
-    NotificationBackground = Color3.fromRGB(20, 20, 20),
-    NotificationActionsBackground = Color3.fromRGB(230, 230, 230),
-
-    TabBackground = Color3.fromRGB(80, 80, 80),
-    TabStroke = Color3.fromRGB(85, 85, 85),
-    TabBackgroundSelected = Color3.fromRGB(210, 210, 210),
-    TabTextColor = Color3.fromRGB(240, 240, 240),
-    SelectedTabTextColor = Color3.fromRGB(50, 50, 50),
-
-    ElementBackground = Color3.fromRGB(35, 35, 35),
-    ElementBackgroundHover = Color3.fromRGB(40, 40, 40),
-    SecondaryElementBackground = Color3.fromRGB(25, 25, 25),
-    ElementStroke = Color3.fromRGB(50, 50, 50),
-    SecondaryElementStroke = Color3.fromRGB(40, 40, 40),
-            
-    SliderBackground = Color3.fromRGB(50, 138, 220),
-    SliderProgress = Color3.fromRGB(50, 138, 220),
-    SliderStroke = Color3.fromRGB(58, 163, 255),
-
-    ToggleBackground = Color3.fromRGB(30, 30, 30),
-    ToggleEnabled = Color3.fromRGB(0, 146, 214),
-    ToggleDisabled = Color3.fromRGB(100, 100, 100),
-    ToggleEnabledStroke = Color3.fromRGB(0, 170, 255),
-    ToggleDisabledStroke = Color3.fromRGB(125, 125, 125),
-    ToggleEnabledOuterStroke = Color3.fromRGB(100, 100, 100),
-    ToggleDisabledOuterStroke = Color3.fromRGB(65, 65, 65),
-
-    DropdownSelected = Color3.fromRGB(40, 40, 40),
-    DropdownUnselected = Color3.fromRGB(30, 30, 30),
-
-    InputBackground = Color3.fromRGB(30, 30, 30),
-    InputStroke = Color3.fromRGB(65, 65, 65),
-    PlaceholderColor = Color3.fromRGB(178, 178, 178)
-},
    Discord = {
       Enabled = false,
       Invite = "noinvitelink",
@@ -80,8 +39,16 @@ Rayfield:Notify({
    Image = "rewind",
 })
 
+Rayfield:Notify({
+    Title = "Quick Scripts Hub Updated",
+    Content = "your Version is 25.3.0.0",
+    Duration = 6.5,
+    Image = "rewind",
+ })
+
 local Tab = Window:CreateTab("Basic", 4483362458) -- Title, Image
 local Tab2 = Window:CreateTab("Prison Life", "swords") -- Pestaña Prison Life
+local Tab5 = Window:CreateTab("Tower of Hell", "activity") -- Pestaña Prison Life
 local Tab3 = Window:CreateTab("FPS", 15862513462) -- Pestaña FPS
 local Tab4 = Window:CreateTab("Roblox Rivals", 15862513462) -- Pestaña Roblox Rivals
 local TabUser = Window:CreateTab("My Profile", "user") -- User
@@ -98,7 +65,7 @@ local username = player.Name
 local Label = TabUser:CreateLabel("Username: " .. username)
 local Paragraph = TabUser:CreateParagraph({Title = "Thanks To Use Quick Scripts Hub!", Content = "Thanks for use"})
 local Paragraph = Tab:CreateParagraph({Title = "Thanks To Use The V2!", Content = "Thanks for Use this New Quick Scripts Hub"})
-local Paragraph = TabHelp:CreateParagraph({Title = "Quick Scripts Hub V2 25.2.0.0", Content = "Your Version is 25.2.0.0, This Hub is A V2 (lastest Version)"})
+local Paragraph = TabHelp:CreateParagraph({Title = "Quick Scripts Hub V2 25.3.0.0", Content = "Your Version is 25.3.0.0, This Hub is A V2 (lastest Version)"})
 local Paragraph = TabHelp:CreateParagraph({Title = "How To Use", Content = "Select A Button and Toggles and Sliders a Textboxs To Make Some Behaviors"})
 local Paragraph = TabHelp:CreateParagraph({Title = "The Compatibility Is", Content = "Xeno, JJSploit, Solara, And Alls Exploits"})
 local Paragraph = Tab4:CreateParagraph({Title = "Welcome to Roblox Rivals Zone", Content = "Here Are Some Roblox Rivals Scripts You Might Be Interested In"})
@@ -106,6 +73,8 @@ local Paragraph = Tab4:CreateParagraph({Title = "Welcome to Roblox Rivals Zone",
 local Section = Tab:CreateSection("Main Section")
 
 local Section = Tab2:CreateSection("Prison Life Scripts")
+
+local Section = Tab5:CreateSection("Tower The Hell Control")
 
 local Section = Tab3:CreateSection("FPS Scripts")
 
@@ -623,6 +592,54 @@ local Button = Tab:CreateButton({
       loadstring(game:HttpGet("https://github.com/kr4sk/Reviz-admin/raw/refs/heads/main/Reviz-admin.lua"))()
    end,
 })
+
+local Button = Tab5:CreateButton({
+    Name = "Jump Gear",
+    Callback = function()
+        local copy = game.ReplicatedStorage.Gear["jump"]:Clone()
+        copy.Parent = game.Players.LocalPlayer.Backpack
+    end,
+ })
+
+local Button = Tab5:CreateButton({
+    Name = "Speed Gear",
+    Callback = function()
+        local copy = game.ReplicatedStorage.Gear["speed"]:Clone()
+        copy.Parent = game.Players.LocalPlayer.Backpack
+    end,
+ })
+
+ local Button = Tab5:CreateButton({
+    Name = "Gravity Gear",
+    Callback = function()
+        local copy = game.ReplicatedStorage.Gear["gravity"]:Clone()
+        copy.Parent = game.Players.LocalPlayer.Backpack
+    end,
+ })
+
+ local Button = Tab5:CreateButton({
+    Name = "Hook Gear",
+    Callback = function()
+        local copy = game.ReplicatedStorage.Gear["hook"]:Clone()
+        copy.Parent = game.Players.LocalPlayer.Backpack
+    end,
+ })
+
+ local Button = Tab5:CreateButton({
+    Name = "Fusion Gear",
+    Callback = function()
+        local copy = game.ReplicatedStorage.Gear["fusion"]:Clone()
+        copy.Parent = game.Players.LocalPlayer.Backpack
+    end,
+ })
+
+ local Button = Tab5:CreateButton({
+    Name = "Trowel Gear",
+    Callback = function()
+        local copy = game.ReplicatedStorage.Gear["trowel"]:Clone()
+        copy.Parent = game.Players.LocalPlayer.Backpack
+    end,
+ })
 
 local Button = Tab4:CreateButton({
    Name = "Azure Modded",
