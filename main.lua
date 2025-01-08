@@ -53,6 +53,7 @@ local Tab3 = Window:CreateTab("FPS", 15862513462) -- Pestaña FPS
 local Tab4 = Window:CreateTab("Roblox Rivals", 15862513462) -- Pestaña Roblox Rivals
 local Tab6 = Window:CreateTab("Arsenal", 15862513462) -- Pestaña Roblox Rivals
 local Tab7 = Window:CreateTab("Pets GO!", "dices") -- Pestaña Roblox Rivals
+local Tab8 = Window:CreateTab("JailBreak", "columns-4") -- Pestaña Roblox Rivals
 local TabUser = Window:CreateTab("My Profile", "user") -- User
 local TabHelp = Window:CreateTab("Help", "info") -- Pestaña Compatibility
 local TabClient = Window:CreateTab("Client", "bolt") -- Pestaña Client
@@ -74,6 +75,7 @@ local Paragraph = Tab4:CreateParagraph({Title = "Welcome to Roblox Rivals Zone",
 local Paragraph = Tab5:CreateParagraph({Title = "Welcome to Tower of Hell Zone", Content = "Sorry, We Will Soon Add a Bypass in this Area"})
 local Paragraph = Tab6:CreateParagraph({Title = "Welcome to Arsenal Zone", Content = "Here Are Some Arsenal Scripts You Might Be Interested In"})
 local Paragraph = Tab7:CreateParagraph({Title = "Welcome to Pets Go! Zone", Content = "Here Are Some Pets GO Scripts You Might Be Interested In"})
+local Paragraph = Tab8:CreateParagraph({Title = "Welcome to Jailbreak Zone", Content = "Here Are Some JailBreak Scripts You Might Be Interested In"})
 local Section = Tab:CreateSection("Main Section")
 local Section = Tab2:CreateSection("Prison Life Scripts")
 local Section = Tab5:CreateSection("Tower The Hell Control")
@@ -176,6 +178,13 @@ local Button = Tab:CreateButton({
    Name = "Click Teleport",
    Callback = function()
      loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Click%20Teleport.txt"))()
+   end,
+})
+
+local Button = Tab8:CreateButton({
+   Name = "( O P ) UNIVERSAL FARM (ONLY USE ON WAVE EXECUTOR)",
+   Callback = function()
+     loadstring(game:HttpGet('https://raw.githubusercontent.com/BlitzIsKing/UniversalFarm/main/Loader/Regular'))()
    end,
 })
 
@@ -662,6 +671,13 @@ local Button = Tab:CreateButton({
 })
 
 local Button = Tab5:CreateButton({
+    Name = "SpinHub",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/dqvh/dqvh/main/SprinHub",true))()
+    end,
+ })
+
+local Button = Tab5:CreateButton({
     Name = "Jump Gear",
     Callback = function()
         local copy = game.ReplicatedStorage.Gear["jump"]:Clone()
@@ -991,46 +1007,53 @@ end
 -- Connect Infinite Jump to Heartbeat to ensure it works continuously
 game:GetService("RunService").Heartbeat:Connect(onJumpRequest)
 
-local spamEnabled = false
-local spamMessage = ""
+-- Variable to store the target player's name
+local targetPlayer = ""
 
-local Toggle = Tab:CreateToggle({
-    Name = "Spam Toggle",
-    CurrentValue = false,
-    Flag = "Toggle1",
-    Callback = function(Value)
-        spamEnabled = Value
-    end,
-})
-
-local Input = Tab:CreateInput({
-    Name = "Spam Text",
-    CurrentValue = "",
-    PlaceholderText = "Introduce el mensaje de spam",
+-- Create a TextBox for entering the player's name
+local PlayerTextbox = Tab:CreateInput({
+    Name = "Player Name",
+    PlaceholderText = "Enter the player's name",
     RemoveTextAfterFocusLost = false,
-    Flag = "Input1",
     Callback = function(Text)
-        spamMessage = Text
-    end,
+        targetPlayer = Text -- Store the entered text
+    end
 })
 
--- Función para hacer spam en el chat
-local function SpamChat()
-    while spamEnabled do
-        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(spamMessage, "All")
-        wait(1)  -- Puedes ajustar el tiempo de espera entre mensajes de spam
-    end
-end
+-- Create a button to execute the teleportation
+local TeleportButton = Tab:CreateButton({
+    Name = "Teleport",
+    Callback = function()
+        local playerRoot = game.Players.LocalPlayer.Character.HumanoidRootPart
+        local humanoid = game.Players.LocalPlayer.Character.Humanoid
 
--- Activar el spamming cuando el toggle esté activado
-Toggle.Callback = function(Value)
-    spamEnabled = Value
-    if spamEnabled then
-        spawn(SpamChat)
+        if game.Players:FindFirstChild(targetPlayer) then
+            local targetCharacter = game.Players[targetPlayer].Character
+            if targetCharacter and targetCharacter:FindFirstChild("HumanoidRootPart") then
+                humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+                wait(0.1)
+                playerRoot.CFrame = targetCharacter.HumanoidRootPart.CFrame
+                Rayfield:Notify({
+                    Title = "Success",
+                    Content = "Teleported successfully!",
+                    Duration = 5,
+                    Image = 4483362458
+                })
+            else
+                Rayfield:Notify({
+                    Title = "Error",
+                    Content = "The target player does not have a HumanoidRootPart.",
+                    Duration = 5,
+                    Image = 4483362458
+                })
+            end
+        else
+            Rayfield:Notify({
+                Title = "Error",
+                Content = "Player not found.",
+                Duration = 5,
+                Image = 4483362458
+            })
+        end
     end
-end
-
--- Actualizar el mensaje de spam cuando se introduce un nuevo texto
-Input.Callback = function(Text)
-    spamMessage = Text
-end
+})
