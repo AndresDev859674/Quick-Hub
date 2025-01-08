@@ -51,12 +51,14 @@ local Tab2 = Window:CreateTab("Prison Life", "swords") -- Pestaña Prison Life
 local Tab5 = Window:CreateTab("Tower of Hell", "activity") -- Pestaña Prison Life
 local Tab3 = Window:CreateTab("FPS", 15862513462) -- Pestaña FPS
 local Tab4 = Window:CreateTab("Roblox Rivals", 15862513462) -- Pestaña Roblox Rivals
+local Tab6 = Window:CreateTab("Arsenal", 15862513462) -- Pestaña Roblox Rivals
+local Tab7 = Window:CreateTab("Pets GO!", "dices") -- Pestaña Roblox Rivals
 local TabUser = Window:CreateTab("My Profile", "user") -- User
 local TabHelp = Window:CreateTab("Help", "info") -- Pestaña Compatibility
 local TabClient = Window:CreateTab("Client", "bolt") -- Pestaña Client
-
 -- Etiquetas (labels)
 Tab2:CreateLabel("Recommended For The Most Chaotic Game Prison Life")
+Tab2:CreateLabel("Walkspeed and stuff is on the Tab Basic")
 Tab3:CreateLabel("Recommended for Shooting and Battle Games etc.")
 TabClient:CreateLabel("Quick Scripts Hub Options and Experiments")
 Tab:CreateLabel("Welcome to Quick Scripts, Select a Button (script)")
@@ -69,17 +71,14 @@ local Paragraph = TabHelp:CreateParagraph({Title = "Quick Scripts Hub V2 25.3.0.
 local Paragraph = TabHelp:CreateParagraph({Title = "How To Use", Content = "Select A Button and Toggles and Sliders a Textboxs To Make Some Behaviors"})
 local Paragraph = TabHelp:CreateParagraph({Title = "The Compatibility Is", Content = "Xeno, JJSploit, Solara, And Alls Exploits"})
 local Paragraph = Tab4:CreateParagraph({Title = "Welcome to Roblox Rivals Zone", Content = "Here Are Some Roblox Rivals Scripts You Might Be Interested In"})
-
+local Paragraph = Tab5:CreateParagraph({Title = "Welcome to Tower of Hell Zone", Content = "Sorry, We Will Soon Add a Bypass in this Area"})
+local Paragraph = Tab6:CreateParagraph({Title = "Welcome to Arsenal Zone", Content = "Here Are Some Arsenal Scripts You Might Be Interested In"})
+local Paragraph = Tab7:CreateParagraph({Title = "Welcome to Pets Go! Zone", Content = "Here Are Some Pets GO Scripts You Might Be Interested In"})
 local Section = Tab:CreateSection("Main Section")
-
 local Section = Tab2:CreateSection("Prison Life Scripts")
-
 local Section = Tab5:CreateSection("Tower The Hell Control")
-
 local Section = Tab3:CreateSection("FPS Scripts")
-
 local Section = Tab4:CreateSection("Rivals Scripts")
-
 local Divider = Tab:CreateDivider()
 
 local Button = Tab:CreateButton({
@@ -95,6 +94,41 @@ local Button = Tab3:CreateButton({
      loadstring(game:HttpGet('https://raw.githubusercontent.com/AndresDev859674/Quick-Scripts-Hub/refs/heads/main/aimbotv2.lua'))()
    end,
 })
+
+local Button = Tab6:CreateButton({
+    Name = "Vapa V2 Script",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/rybowe/rybowescripts/main/release.lua'))()
+    end,
+ })
+
+local Button = Tab6:CreateButton({
+    Name = "Thao Hub Arsenal",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/thaibao/main/TbaoHubArsenal"))()
+    end,
+ })
+
+local Button = Tab7:CreateButton({
+    Name = "NS HUB",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/OhhMyGehlee/rel/refs/heads/main/el"))()
+    end,
+ })
+
+local Button = Tab7:CreateButton({
+    Name = "Zap Hub",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/013luka/petsgo/refs/heads/main/zaphub"))()
+    end,
+ })
+
+local Button = Tab7:CreateButton({
+    Name = "Speed Hub X",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
+    end,
+ })
 
 local Button = TabClient:CreateButton({
    Name = "Close Permanently, Close The Instant Hub",
@@ -454,6 +488,40 @@ local Input = Tab:CreateInput({
         end
    end,
 })
+
+local Input = Tab:CreateInput({
+    Name = "Teleport to Player",
+    CurrentValue = "",
+    PlaceholderText = "Put a Username",
+    RemoveTextAfterFocusLost = false,
+    Flag = "Input1",
+    Callback = function(Text)
+        -- Función de teletransporte
+        TeleportToPlayer(Text)
+    end,
+})
+
+function TeleportToPlayer(playerName)
+    -- Encuentra el jugador por nombre
+    local targetPlayer = nil
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        if player.Name == playerName then
+            targetPlayer = player
+            break
+        end
+    end
+
+    if targetPlayer then
+        -- Teletransportar al jugador local a la posición del jugador objetivo
+        local localPlayer = game.Players.LocalPlayer
+        if localPlayer.Character and targetPlayer.Character then
+            localPlayer.Character:SetPrimaryPartCFrame(targetPlayer.Character:GetPrimaryPartCFrame())
+        end
+    else
+        warn("Jugador no encontrado: " .. playerName)
+    end
+end
+
 
 local Button = Tab:CreateButton({
    Name = "Suicide",
@@ -923,4 +991,46 @@ end
 -- Connect Infinite Jump to Heartbeat to ensure it works continuously
 game:GetService("RunService").Heartbeat:Connect(onJumpRequest)
 
+local spamEnabled = false
+local spamMessage = ""
 
+local Toggle = Tab:CreateToggle({
+    Name = "Spam Toggle",
+    CurrentValue = false,
+    Flag = "Toggle1",
+    Callback = function(Value)
+        spamEnabled = Value
+    end,
+})
+
+local Input = Tab:CreateInput({
+    Name = "Spam Text",
+    CurrentValue = "",
+    PlaceholderText = "Introduce el mensaje de spam",
+    RemoveTextAfterFocusLost = false,
+    Flag = "Input1",
+    Callback = function(Text)
+        spamMessage = Text
+    end,
+})
+
+-- Función para hacer spam en el chat
+local function SpamChat()
+    while spamEnabled do
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(spamMessage, "All")
+        wait(1)  -- Puedes ajustar el tiempo de espera entre mensajes de spam
+    end
+end
+
+-- Activar el spamming cuando el toggle esté activado
+Toggle.Callback = function(Value)
+    spamEnabled = Value
+    if spamEnabled then
+        spawn(SpamChat)
+    end
+end
+
+-- Actualizar el mensaje de spam cuando se introduce un nuevo texto
+Input.Callback = function(Text)
+    spamMessage = Text
+end
