@@ -861,7 +861,7 @@ local function CreateESP(player)
         highlight.Parent = player.Character
         highlight.FillTransparency = 0.5
         highlight.OutlineTransparency = 0 -- Hace visible el contorno a través de las paredes
-        
+
         local teamColor = Color3.fromRGB(255, 255, 255) -- Color por defecto (blanco)
         if player.Team then
             teamColor = player.Team.TeamColor.Color
@@ -883,11 +883,19 @@ local function CreateESP(player)
             local label = Instance.new("TextLabel")
             label.Parent = billboard
             label.Size = UDim2.new(1, 0, 1, 0)
-            label.BackgroundTransparency = 1 -- Fondo transparente
-            label.TextColor3 = Color3.fromRGB(255, 255, 255) -- Color por defecto (blanco)
+            label.BackgroundTransparency = 0.3 -- Fondo semitransparente estilo consola
+            label.BackgroundColor3 = Color3.fromRGB(0, 0, 0) -- Fondo negro
+            label.BorderSizePixel = 0
             label.TextStrokeTransparency = 0
             label.TextWrapped = true
             label.TextScaled = true
+            label.TextColor3 = player.Team and player.Team.TeamColor.Color or Color3.fromRGB(255, 255, 255) -- Color del equipo
+            label.Text = "Team: " .. (player.Team and player.Team.Name or "No Team")
+
+            -- Añadir bordes redondeados
+            local uicorner = Instance.new("UICorner")
+            uicorner.CornerRadius = UDim.new(0.2, 0)
+            uicorner.Parent = label
 
             return billboard, label
         else
@@ -896,31 +904,49 @@ local function CreateESP(player)
         end
     end
 
-    local highlight = CreateHighlight()
-    local billboard, label = CreateBillboard()
-    if not billboard then return end
-    
-    local startTime = tick()
+    if player.Character then
+        local highlight = CreateHighlight()
+        local billboard, label = CreateBillboard()
+        if not billboard then return end
 
-    local function UpdateLabel()
-        if player.Character and player.Character:FindFirstChild("Humanoid") then
-            local humanoid = player.Character.Humanoid
-            local distance = (player.Character.PrimaryPart.Position - game.Players.LocalPlayer.Character.PrimaryPart.Position).Magnitude
-            local heldItem = "None"
-            
-            if player.Character:FindFirstChildOfClass("Tool") then
-                heldItem = player.Character:FindFirstChildOfClass("Tool").Name
+        local startTime = tick()
+
+        local function UpdateLabel()
+            if player.Character and player.Character:FindFirstChild("Humanoid") then
+                local humanoid = player.Character.Humanoid
+                local distance = (player.Character.PrimaryPart.Position - game.Players.LocalPlayer.Character.PrimaryPart.Position).Magnitude
+                local heldItem = "None"
+                
+                if player.Character:FindFirstChildOfClass("Tool") then
+                    heldItem = player.Character:FindFirstChildOfClass("Tool").Name
+                end
+
+                local timeElapsed = tick() - startTime
+
+                local seat = "None"
+                if player.Character:FindFirstChildWhichIsA("Seat") then
+                    seat = player.Character:FindFirstChildWhichIsA("Seat").Name
+                end
+
+                label.Text = string.format("Team: %s / Name: %s / Health: %.0f%% / Studs: %.0f / Item: %s / Time: %.0f s / Sit: %s", 
+                    player.Team and player.Team.Name or "No Team", 
+                    player.Name, 
+                    humanoid.Health / humanoid.MaxHealth * 100, 
+                    distance, 
+                    heldItem, 
+                    timeElapsed,
+                    seat)
+                
+                if player.Team then
+                    label.TextColor3 = player.Team.TeamColor.Color
+                end
             end
-
-            local timeElapsed = tick() - startTime
-
-            label.Text = string.format("Name: %s / Health: %.0f%% / Studs: %.0f / Item: %s / Time: %.0f s", player.Name, humanoid.Health / humanoid.MaxHealth * 100, distance, heldItem, timeElapsed)
         end
-    end
 
-    game:GetService("RunService").RenderStepped:Connect(UpdateLabel)
-    
-    billboard.Parent = player.Character
+        game:GetService("RunService").RenderStepped:Connect(UpdateLabel)
+        
+        billboard.Parent = player.Character
+    end
 end
 
 local function RemoveESP(player)
@@ -941,6 +967,7 @@ local function ToggleESP(enable)
                 CreateESP(player)
                 player.CharacterAdded:Connect(function()
                     if ESPEnabled then
+                        wait(1) -- Pequeño retraso para asegurar que el personaje ha cargado
                         CreateESP(player)
                     end
                 end)
@@ -966,9 +993,9 @@ local Toggle = Tab:CreateToggle({
 
 game.Players.PlayerAdded:Connect(function(player)
     if ESPEnabled then
-        CreateESP(player)
         player.CharacterAdded:Connect(function()
             if ESPEnabled then
+                wait(1) -- Pequeño retraso para asegurar que el personaje ha cargado
                 CreateESP(player)
             end
         end)
@@ -978,6 +1005,34 @@ end)
 game.Players.PlayerRemoving:Connect(function(player)
     RemoveESP(player)
 end)
+
+-- Aplicar ESP a todos los jugadores existentes
+for _, player in pairs(game.Players:GetPlayers()) do
+    if player ~= game.Players.LocalPlayer and ESPEnabled then
+        CreateESP(player)
+    end
+end
+
+-- Función para hacer ServerHop
+local function ServerHop()
+    local gameId = game.PlaceId
+    local servers = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..gameId.."/servers/Public?sortOrder=Asc&limit=100"))
+    
+    for _, server in pairs(servers.data) do
+        if server.playing < server.maxPlayers then
+            game:GetService("TeleportService"):TeleportToPlaceInstance(gameId, server.id, game.Players.LocalPlayer)
+            break
+        end
+    end
+end
+
+-- Añadir botón de ServerHop
+local ServerHopButton = Tab:CreateButton({
+    Name = "ServerHop",
+    Callback = function()
+        ServerHop()
+    end,
+})
 
 -- Variables
 local InfiniteJumpEnabled = false
