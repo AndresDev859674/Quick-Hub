@@ -1,7 +1,7 @@
 print("Loading Quick Scripts Hub V2.....")
 
 local success, scriptContent = pcall(function()
-    return game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Scripts-Hub-V2/main/main.lua")
+    return game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Scripts-Hub-V2/main/loader.lua")
 end)
 
 if success then
