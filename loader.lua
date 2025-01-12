@@ -1,12 +1,12 @@
-print("Running First Quick Scripts Hub Loader")
+print("Running First Quick Center Loader")
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
-local Window = Library.CreateLib("Quick Scripts Hub Loader", "DarkTheme")
+local Window = Library.CreateLib("Quick Center Loader", "DarkTheme")
 
 local Tab = Window:NewTab("Welcome")
 
-local Section = Tab:NewSection("Welcome to Quick Scripts Hub Loader Menu!")
+local Section = Tab:NewSection("Welcome to Quick Center Loader Menu!")
 
 local button = Section:NewButton("Quick Scripts Hub Modern (Recomended and Main)", "ButtonInfo", function()
     local scriptContent = game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Scripts-Hub-V2/main/main.lua")
