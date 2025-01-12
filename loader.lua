@@ -11,6 +11,4 @@ local Section = Tab:NewSection("Welcome to Quick Scripts Hub Loader Menu!")
 local button = Section:NewButton("Quick Scripts Hub Modern (Recomended and Main)", "ButtonInfo", function()
     local scriptContent = game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Scripts-Hub-V2/main/execute.lua")
     loadstring(scriptContent)()
-
-    button:Destroy()
 end)
