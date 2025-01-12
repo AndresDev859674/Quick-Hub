@@ -775,3 +775,9 @@ Tab:AddSlider({
    end
 })
 
+Tab:AddButton({
+    Name = "Close Permanently, Close The Instant Hub",
+    Callback = function()
+            OrionLib:Destroy()
+    end    
+})
