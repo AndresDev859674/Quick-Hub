@@ -1,46 +1,61 @@
 # Quick Hub 📌
 
-🎮 **A Universal Script That Can Run Any Behavior and Script Without Searching in Bing and Google**
+🎮 **A Universal Script Hub for Running Any Behavior and Script Without Searching the Web**
 
-This is the latest Quick Scripts Hub!
+Welcome to **Quick Hub** — a Universal Script, your go-to resource for running Roblox scripts without the need to search endlessly on Google or Bing.
 
 ![Quick Scripts Hub](https://raw.githubusercontent.com/AndresDev859674/Quick-Scripts-Hub-V2/refs/heads/main/game.png)
 
-## WARNING ⚠️
+## ⚠️ Warning
 
-This script has a lot of potential it's not for enhancing games for more fun just hacking fun, you can get banned in games for example Roblox RIVALS (for aimbot and esp and walkspeed and fly) etc, you should be careful, at least you can hack games that are not protected for example Prison Life a chaotic hacker game, Thanks for reading!
+This script has immense potential. However, please be aware that it's not designed for simply enhancing gameplay for fun. It includes scripts like aimbots, ESP (Extra Sensory Perception), walk speed, and fly hacks, which can lead to getting banned in games like *Roblox RIVALS*.
 
-## and an announcement 👀✨
+**Caution:** You should only use it in games that are not well-protected, like *Prison Life*, a chaotic hacker-friendly game. Always use at your own risk!
 
-Quick Scripts Hub's Basic tab will no longer receive Player Behaviors Now it is Received in Quick Functions Hub! a place for Behavior without searching the internet for Player Modify scripts etc! We are going to add bypass to modify your player without getting banned and kicking the game and more things!
+## 👀 Announcement
 
-## Recomended Games 🚀
+Quick Scripts Hub's **Basic Tab** will no longer support player behaviors. These will now be managed through the **Quick Functions Hub**, a new platform dedicated to player modification scripts! Our goal is to introduce mechanisms that allow you to modify your player without getting banned or kicked from the game.
 
-[Prison Life](https://www.roblox.com/es/games/155615604/Prison-Life) [A Literal Baseplate](https://www.roblox.com/es/games/4483381587/a-literal-baseplate) [Natural Disaster](https://www.roblox.com/es/games/189707/Natural-Disaster-Survival) And More Games to Exploiting
+Additionally, **Quick Scripts Hub** is now rebranded as **Quick Hub**!! Stay tuned for more updates and features.
 
-## What Is Quick Scripts Hub? 🤔
+## 🚀 Recommended Games
 
-Quick Scripts Hub is a quick script picker that lets you select and run scripts without needing to search the browser. However, updates are quite slow to come out. Quick Scripts Hub has immense potential (with strong Roblox scripts) that can either enhance or destroy the game, or even get you banned. Note that these are not game-improving scripts; they are scripts that can potentially disrupt the game. You can visit the [GitHub page](https://github.com/AndresDev859674/Quick-Scripts-Hub-V2) to report bugs or request scripts from the creator through the Issues tab.
+- [Prison Life](https://www.roblox.com/es/games/155615604/Prison-Life)
+- [A Literal Baseplate](https://www.roblox.com/es/games/4483381587/a-literal-baseplate)
+- [Natural Disaster Survival](https://www.roblox.com/es/games/189707/Natural-Disaster-Survival)
 
-## Some Scripts Do Not Appear in the Menu? ❓
+Explore more games to exploit and experiment with!
 
-There might be too many resources in the game (depending on the power of your PC or phone).
+## 🤔 What Is Quick Hub?
 
-## Contains the Rayfield Library
+**Quick Hub** is a simple tool designed to help you run scripts through **Quick Scripts Hub** and access player functions via **Quick Functions Hub** on Roblox without needing to search the web. While updates may be slow and there isn't yet a massive collection of the latest scripts, **Quick Hub** still has huge potential. 
 
-With the most modern Roblox library
+It’s important to note that these scripts are not designed to enhance the game but rather to modify, break, or even destroy it. They can also lead to bans. Additionally, it's unclear whether you can implement certain features using Lua on servers like scriptblox.com, but the possibilities remain vast.
 
-https://github.com/SiriusSoftwareLtd/Rayfield/tree/main
+If you'd like to suggest a new script, feel free to submit it via the [GitHub Issues page](https://github.com/AndresDev859674/Quick-Hub/issues) and tag it with the "enhancement" label.
 
-[![rayfield](https://user-images.githubusercontent.com/77512805/197843157-3485a6e4-7b18-4372-8277-f3a2e7bd0317.png)](https://sirius.menu/discord)
+For bug reports or script requests, visit the [GitHub Issues page](https://github.com/AndresDev859674/Quick-Scripts-Hub-V2).
 
-## How to Run the Script? 🚀
+## ❓ Why Do Some Scripts Not Appear in the Menu?
 
-1. Download JJSploit or Solara (PC only).
-2. Run this script:
-3. Test the Script with this Game: [Test Game](https://www.roblox.com/es/games/4483381587/a-literal-baseplate)
+If you're not seeing some scripts, it could be due to the game's resource load, which might depend on the capabilities of your PC or phone.
+
+## 🔧 Powered by Rayfield Library
+
+Quick Scripts Hub integrates the modern **Rayfield Library**, one of the most powerful and efficient libraries for Roblox scripting.
+
+Learn more about the library: [Rayfield GitHub](https://github.com/SiriusSoftwareLtd/Rayfield/tree/main)
+
+![Rayfield Library](https://user-images.githubusercontent.com/77512805/197843157-3485a6e4-7b18-4372-8277-f3a2e7bd0317.png)
+
+## 🚀 How to Run the Script?
+
+Follow these steps to get started:
+
+1. **Download a script executor**: Choose either [JJSploit](https://www.jjsploit.com) or [Solara](https://www.solara.io) (PC only).
+2. **Run the script**:
+3. Test the script on this game: [Test Game](https://www.roblox.com/es/games/4483381587/a-literal-baseplate)
 
 ```lua
 local scriptContent = game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Hub/main/execute.lua")
 loadstring(scriptContent)()
-
