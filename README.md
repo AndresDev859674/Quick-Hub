@@ -1,4 +1,4 @@
-# Quick Scripts Hub V2 📌
+# Quick Hub 📌
 
 🎮 **A Universal Script That Can Run Any Behavior and Script Without Searching in Bing and Google**
 
@@ -9,6 +9,10 @@ This is the latest Quick Scripts Hub!
 ## WARNING ⚠️
 
 This script has a lot of potential it's not for enhancing games for more fun just hacking fun, you can get banned in games for example Roblox RIVALS (for aimbot and esp and walkspeed and fly) etc, you should be careful, at least you can hack games that are not protected for example Prison Life a chaotic hacker game, Thanks for reading!
+
+## and an announcement 👀✨
+
+Quick Scripts Hub's Basic tab will no longer receive Player Behaviors Now it is Received in Quick Functions Hub! a place for Behavior without searching the internet for Player Modify scripts etc! We are going to add bypass to modify your player without getting banned and kicking the game and more things!
 
 ## Recomended Games 🚀
 
