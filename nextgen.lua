@@ -673,14 +673,13 @@ local function CreateESP(player)
                     seat = player.Character:FindFirstChildWhichIsA("Seat").Name
                 end
 
-                label.Text = string.format("Team: %s / Name: %s / Health: %.0f%% / Studs: %.0f / Item: %s / Time: %.0f s / Sit: %s", 
+                label.Text = string.format("Team: %s / Name: %s / Health: %.0f%% / Studs: %.0f / Item: %s / Time: %.0f s", 
                     player.Team and player.Team.Name or "No Team", 
                     player.Name, 
                     humanoid.Health / humanoid.MaxHealth * 100, 
                     distance, 
                     heldItem, 
-                    timeElapsed,
-                    seat)
+                    timeElapsed)
                 
                 if player.Team then
                     label.TextColor3 = player.Team.TeamColor.Color
@@ -756,6 +755,7 @@ for _, player in pairs(game.Players:GetPlayers()) do
         CreateESP(player)
     end
 end
+
 
 local gravity = 200
 
