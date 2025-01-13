@@ -41,6 +41,6 @@ https://github.com/SiriusSoftwareLtd/Rayfield/tree/main
 3. Test the Script with this Game: [Test Game](https://www.roblox.com/es/games/4483381587/a-literal-baseplate)
 
 ```lua
-local scriptContent = game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Scripts-Hub-V2/main/execute.lua")
+local scriptContent = game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Hub/main/execute.lua")
 loadstring(scriptContent)()
 
