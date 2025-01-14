@@ -1,19 +1,46 @@
 print("Running First Quick Center Loader")
 
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
+local Window = OrionLib:MakeWindow({Name = "Quick Center Loader", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
-local Window = Library.CreateLib("Quick Center Loader", "DarkTheme")
+local Tab = Window:MakeTab({
+    Name = "Tab 1",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
 
-local Tab = Window:NewTab("Welcome")
+Tab:AddSection({
+    Name = "Welcome to Quick Hub Loader Menu!"
+})
 
-local Section = Tab:NewSection("Welcome to Quick Hub Loader Menu!")
+OrionLib:MakeNotification({
+    Name = "Welcome To Quick Hub (Loader)",
+    Content = "It's a Loader of Quick Hub!",
+    Image = "rbxassetid://4483345998",
+    Time = 5
+})
 
-local button = Section:NewButton("Quick Scripts Hub V2 (Recomended and Main)", "Opens QSH V2 and Close this Window", function()
-    local scriptContent = game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Hub/main/main.lua")
-    loadstring(scriptContent)()
-end)
+Tab:AddButton({
+    Name = "Quick Scripts Hub V2 (Recommended and Main)",
+    Callback = function()
+        local scriptContent = game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Hub/main/main.lua")
+        loadstring(scriptContent)()
+        OrionLib:Destroy()
+    end
+})
 
-local button = Section:NewButton("Quick Functions Hub (NEW!)", "Opens QFH and Close this Window", function()
-    local scriptContent = game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Hub/main/nextgen.lua")
-    loadstring(scriptContent)()
-end)
+Tab:AddButton({
+    Name = "Quick Functions Hub (NEW!)",
+    Callback = function()
+        local scriptContent = game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Hub/main/nextgen.lua")
+        loadstring(scriptContent)()
+        OrionLib:Destroy()
+    end
+})
+
+Tab:AddButton({
+    Name = "Close Permanently, Close The Instant Hub",
+    Callback = function()
+            OrionLib:Destroy()
+    end    
+})
