@@ -1,6 +1,6 @@
 print("Running First Quick Center Loader")
 
-local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
+local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/AndresDev859674/Quick-Hub/refs/heads/main/orionfixed.lua'))()
 local Window = OrionLib:MakeWindow({Name = "Quick Center Loader", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
 local Tab = Window:MakeTab({
