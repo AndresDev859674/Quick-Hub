@@ -3,7 +3,7 @@ print("Running Quick Scripts Hub V2.....")
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/SiriusSoftwareLtd/Rayfield/main/source.lua'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "Quick Scripts Hub V2",
+   Name = "Quick Hub",
    Icon = "mouse-pointer-click", -- Icono para la ventana
    LoadingTitle = "Loading Quick Scripts Hub",
    LoadingSubtitle = "by Andres & Luisito",
@@ -40,8 +40,8 @@ Rayfield:Notify({
 })
 
 Rayfield:Notify({
-    Title = "Quick Scripts Hub Updated",
-    Content = "your Version is 25.3.0.0",
+    Title = "Quick Hub (Quick Scripts Hub) Updated",
+    Content = "your Version is 25.3.0.1",
     Duration = 6.5,
     Image = "rewind",
  })
@@ -66,9 +66,9 @@ Tab:CreateLabel("Welcome to Quick Scripts, Select a Button (script)")
 local player = game.Players.LocalPlayer
 local username = player.Name
 local Label = TabUser:CreateLabel("Username: " .. username)
-local Paragraph = TabUser:CreateParagraph({Title = "Thanks To Use Quick Scripts Hub!", Content = "Thanks for use"})
+local Paragraph = TabUser:CreateParagraph({Title = "Thanks To Use Quick Hub (Quick Scripts Hub)!", Content = "Thanks for use"})
 local Paragraph = Tab:CreateParagraph({Title = "Thanks To Use The V2!", Content = "Thanks for Use this New Quick Scripts Hub"})
-local Paragraph = TabHelp:CreateParagraph({Title = "Quick Scripts Hub V2 25.3.0.0", Content = "Your Version is 25.3.0.0, This Hub is A V2 (lastest Version)"})
+local Paragraph = TabHelp:CreateParagraph({Title = "Quick Hub (Quick Scripts Hub V2) 25.3.0.1", Content = "Your Version is 25.3.0.1, This Hub is A V2 (lastest Version)"})
 local Paragraph = TabHelp:CreateParagraph({Title = "How To Use", Content = "Select A Button and Toggles and Sliders a Textboxs To Make Some Behaviors"})
 local Paragraph = TabHelp:CreateParagraph({Title = "The Compatibility Is", Content = "Xeno, JJSploit, Solara, And Alls Exploits"})
 local Paragraph = Tab4:CreateParagraph({Title = "Welcome to Roblox Rivals Zone", Content = "Here Are Some Roblox Rivals Scripts You Might Be Interested In"})
