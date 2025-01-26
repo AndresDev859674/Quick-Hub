@@ -60,7 +60,7 @@ loadstring(scriptContent)()
 
 Follow these steps to get started:
 
-1. **Download a script executor**: Choose either [JJSploit](https://www.jjsploit.com) or [Solara](https://www.solara.io) (PC only).
+1. **Download a script executor**
 2. **Run the script**:
 3. Test the script on this game: [Test Game](https://www.roblox.com/es/games/4483381587/a-literal-baseplate)
 
