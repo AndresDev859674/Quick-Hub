@@ -166,7 +166,7 @@
         }
         
         function copyCode() {
-            const code = document.getElementById("scriptCode").textContent; // Solo el contenido del código
+            const code = document.getElementById("scriptCode").textContent;
             const button = document.getElementById("copyButton");
             navigator.clipboard.writeText(code).then(() => {
                 button.innerText = "Copied!";
@@ -237,14 +237,6 @@
         <p>Learn more about the library: <a href="https://github.com/SiriusSoftwareLtd/Rayfield/tree/main">Rayfield GitHub</a></p>
         <img src="https://user-images.githubusercontent.com/77512805/197843157-3485a6e4-7b18-4372-8277-f3a2e7bd0317.png" alt="Rayfield Library">
         
-        <h2>⚠️ If Orion Library is Broken</h2>
-        <p>Use this code to avoid this (ONLY RUN QUICK SCRIPTS HUB)</p>
-        <pre id="scriptCode">
-local scriptContent = game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Hub/main/main.lua")
-loadstring(scriptContent)()
-        </pre>
-        <button id="copyButton" class="copy-btn" onclick="copyCode()">Copy Code</button>
-
         <h2>🚀 How to Run the Script</h2>
         <ol>
             <li>Download a script executor: <a href="exploits.html">Explore Exploits Zone</a>.</li>
