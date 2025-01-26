@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Hub 📌</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            color: #fff;
+            background: #121212;
+            transition: background 0.3s, color 0.3s;
+        }
+        .navbar {
+            width: 90%;
+            background: #1a1a2e;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 20px;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(18, 0, 181, 0.3);
+        }
+        
+        .navbar-left {
+            text-align: left; /* Asegura que el texto esté alineado a la izquierda */
+        }
+        
+        .navbar-left h1, .navbar-left p {
+            margin: 0;
+            color: #00aaff;
+            padding-left: 0;
+        }
+        
+        .more-buttons {
+            margin-left: 20px; /* Separa el botón Exploits un poco */
+        }
+        
+        .theme-selector {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .theme-selector button, .more-buttons button {
+            background: #141414;
+            color: #fff;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+        
+        .theme-selector button:hover, .more-buttons button:hover {
+            background: #0088cc;
+        }
+        
+        .container {
+            max-width: 800px;
+            background: #1a1a2e;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 42, 181, 0.2);
+            text-align: center;
+            margin-top: 20px;
+        }
+        h2, h3 {
+            color: #00aaff;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 15px;
+            margin-top: 10px;
+        }
+        pre {
+            background: #080808;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 15px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            position: relative;
+        }
+        a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            background: #2c2c54;
+            margin: 5px 0;
+            padding: 12px;
+            border-radius: 15px;
+        }
+        ol {
+            text-align: left;
+        }
+        button {
+            background: #141414;
+            color: #fff;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+        button:hover {
+            background: #0088cc;
+        }
+        .light-theme {
+            background: #f0f0f0;
+            color: #000;
+        }
+        .light-theme .container, .light-theme .navbar {
+            background: #ffffff;
+        }
+        .light-theme pre {
+            background: #f9f9f9;
+            color: #000;
+        }
+        .light-theme a {
+            color: #007bff; /* Cambiar color de enlace en tema claro */
+        }
+        .light-theme a:hover {
+            color: #0056b3; /* Color de enlace cuando pasa el cursor */
+        }
+        .light-theme button {
+            background: #e0e0e0;
+            color: #333;
+        }
+        .copy-btn {
+            background-color: #0088cc;
+            padding: 5px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: white;
+            font-size: 14px;
+            border: none;
+        }
+        .copy-btn:disabled {
+            background-color: #666;
+            cursor: not-allowed;
+        }
+    </style>
+    <script>
+        function detectSystemTheme() {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.body.className = prefersDark ? 'dark-theme' : 'light-theme';
+        }
+        
+        function changeTheme(theme) {
+            document.body.className = theme;
+        }
+        
+        function copyCode() {
+            const code = document.getElementById("scriptCode").textContent; // Solo el contenido del código
+            const button = document.getElementById("copyButton");
+            navigator.clipboard.writeText(code).then(() => {
+                button.innerText = "Copied!";
+                button.disabled = true;
+                setTimeout(() => {
+                    button.innerText = "Copy Code";
+                    button.disabled = false;
+                }, 2000); // Reset button after 2 seconds
+            }).catch(err => {
+                console.error("Error al copiar el código: ", err);
+            });
+        }
+        
+        window.onload = detectSystemTheme;
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-left">
+            <h1>Quick Hub 📌</h1>
+            <p>A Center Created for Exploiters</p>
+        </div>
+        <div class="more-buttons">
+            <a href="exploits.html">
+                <button>Exploits</button>
+            </a>
+            <a href="script.html">
+                <button>Script</button>
+            </a>
+            <a href="index.html">
+                <button>Home</button>
+            </a>
+        </div>
+        <div class="theme-selector">
+            <button onclick="changeTheme('light-theme')">Light (BETA)</button>
+            <button onclick="changeTheme('dark-theme')">Dark</button>
+        </div>
+    </div>    
+    <div class="container">
+        <p>🎮 <strong>Run scripts without searching the web</strong></p>
+        <p>Welcome to <strong>Quick Hub</strong>, your go-to tool for running Roblox scripts hassle-free.</p>
+        <p>and the most modern one that uses modern libraries and modern styles.</p>
+        <img src="https://raw.githubusercontent.com/AndresDev859674/Quick-Scripts-Hub-V2/refs/heads/main/game.png" alt="Quick Scripts Hub">
+        
+        <h2>⚠️ Warning</h2>
+        <p>This script has immense potential. However, please be aware that it's not designed for simply enhancing gameplay for fun. It includes scripts like aimbots, ESP (Extra Sensory Perception), walk speed, and fly hacks, which can lead to getting banned in games like *Roblox RIVALS*.</p>
+        <p><strong>Caution:</strong> You should only use it in games that are not well-protected, like *Prison Life*, a chaotic hacker-friendly game. Always use at your own risk!</p>
+        
+        <h2>👀 Announcement</h2>
+        <p>The <strong>Basic Tab</strong> will no longer support player modifications. This will be managed by <strong>Quick Functions Hub</strong>.</p>
+        
+        <h2>🚀 Recommended Games</h2>
+        <ul>
+            <li><a href="https://www.roblox.com/games/155615604/Prison-Life">Prison Life</a></li>
+            <li><a href="https://www.roblox.com/games/4483381587/a-literal-baseplate">A Literal Baseplate</a></li>
+            <li><a href="https://www.roblox.com/games/189707/Natural-Disaster-Survival">Natural Disaster Survival</a></li>
+        </ul>
+        
+        <h2>🤔 What Is Quick Hub?</h2>
+        <p><strong>Quick Hub</strong> is a simple tool designed to help you run scripts through **Quick Scripts Hub** and access player functions via **Quick Functions Hub** on Roblox without needing to search the web. While updates may be slow and there isn't yet a massive collection of the latest scripts, **Quick Hub** still has huge potential. </p>
+        <p>It’s important to note that these scripts are not designed to enhance the game but rather to modify, break, or even destroy it. They can also lead to bans. Additionally, it's unclear si puedes implementar ciertos features usando Lua en servidores como scriptblox.com, pero las posibilidades siguen siendo vastas.</p>
+        
+        <h2>❓ Why Do Some Scripts Not Appear in the Menu?</h2>
+        <p>If you're not seeing some scripts, it could be due to the game's resource load, which might depend on the capabilities of your PC or phone.</p>
+        
+        <h2>🔧 Powered by Rayfield Library</h2>
+        <p>Quick Scripts Hub integrates the modern <strong>Rayfield Library</strong>, one of the most powerful and efficient libraries for Roblox scripting.</p>
+        <p>Learn more about the library: <a href="https://github.com/SiriusSoftwareLtd/Rayfield/tree/main">Rayfield GitHub</a></p>
+        <img src="https://user-images.githubusercontent.com/77512805/197843157-3485a6e4-7b18-4372-8277-f3a2e7bd0317.png" alt="Rayfield Library">
+        
+        <h2>⚠️ If Orion Library is Broken</h2>
+        <p>Use this code to avoid this (ONLY RUN QUICK SCRIPTS HUB)</p>
+        <pre id="scriptCode">
+local scriptContent = game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Hub/main/main.lua")
+loadstring(scriptContent)()
+        </pre>
+        <button id="copyButton" class="copy-btn" onclick="copyCode()">Copy Code</button>
+
+        <h2>🚀 How to Run the Script</h2>
+        <ol>
+            <li>Download a script executor: <a href="exploits.html">Explore Exploits Zone</a>.</li>
+            <li>Run the script:</li>
+        </ol>
+        <pre id="scriptCode">
+local scriptContent = game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Hub/main/execute.lua")
+loadstring(scriptContent)()
+        </pre>
+        <button id="copyButton" class="copy-btn" onclick="copyCode()">Copy Code</button>
+    </div>
+</body>
+</html>
