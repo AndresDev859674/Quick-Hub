@@ -5,7 +5,7 @@ local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/Siri
 local Window = Rayfield:CreateWindow({
    Name = "Quick Hub",
    Icon = "mouse-pointer-click", -- Icono para la ventana
-   LoadingTitle = "Loading Quick Scripts Hub",
+   LoadingTitle = "Loading Quick Hub",
    LoadingSubtitle = "by Andres & Luisito",
    Theme = "Default",
    DisableRayfieldPrompts = false,
@@ -13,7 +13,7 @@ local Window = Rayfield:CreateWindow({
    ConfigurationSaving = {
       Enabled = true,
       FolderName = "OrionTest",
-      FileName = "Big Hub"
+      FileName = "Quick Hub"
    },
    Discord = {
       Enabled = false,
@@ -36,17 +36,18 @@ Rayfield:Notify({
    Title = "Hi! Thanks For Use",
    Content = "Hello! Thanks For Use This Script!",
    Duration = 6.5,
-   Image = "rewind",
+   Image = "sparkles",
 })
 
 Rayfield:Notify({
     Title = "Quick Hub (Quick Scripts Hub) Updated",
-    Content = "your Version is 25.3.0.1",
+    Content = "your Version is 25.3.1.0, Now we have everything from QFH",
     Duration = 6.5,
-    Image = "rewind",
+    Image = "check",
  })
 
 local Tab = Window:CreateTab("Basic", 4483362458) -- Title, Image
+local Tab9 = Window:CreateTab("Player Experiments", "flask-conical") -- Pestaña Prison Life
 local Tab2 = Window:CreateTab("Prison Life", "swords") -- Pestaña Prison Life
 local Tab5 = Window:CreateTab("Tower of Hell", "activity") -- Pestaña Prison Life
 local Tab3 = Window:CreateTab("FPS", 15862513462) -- Pestaña FPS
@@ -61,6 +62,7 @@ local TabClient = Window:CreateTab("Client", "bolt") -- Pestaña Client
 Tab2:CreateLabel("Recommended For The Most Chaotic Game Prison Life")
 Tab2:CreateLabel("Walkspeed and stuff is on the Tab Basic")
 Tab3:CreateLabel("Recommended for Shooting and Battle Games etc.")
+Tab9:CreateLabel("some silly things and experiments and tests and simulation.")
 TabClient:CreateLabel("Quick Scripts Hub Options and Experiments")
 Tab:CreateLabel("Welcome to Quick Scripts, Select a Button (script)")
 local player = game.Players.LocalPlayer
@@ -68,11 +70,11 @@ local username = player.Name
 local Label = TabUser:CreateLabel("Username: " .. username)
 local Paragraph = TabUser:CreateParagraph({Title = "Thanks To Use Quick Hub (Quick Scripts Hub)!", Content = "Thanks for use"})
 local Paragraph = Tab:CreateParagraph({Title = "Thanks To Use The V2!", Content = "Thanks for Use this New Quick Scripts Hub"})
-local Paragraph = TabHelp:CreateParagraph({Title = "Quick Hub (Quick Scripts Hub V2) 25.3.0.1", Content = "Your Version is 25.3.0.1, This Hub is A V2 (lastest Version)"})
+local Paragraph = TabHelp:CreateParagraph({Title = "Quick Hub (Quick Scripts Hub V2) 25.3.1.0", Content = "Your Version is 25.3.1.0, This Hub is A V2 (lastest Version)"})
 local Paragraph = TabHelp:CreateParagraph({Title = "How To Use", Content = "Select A Button and Toggles and Sliders a Textboxs To Make Some Behaviors"})
 local Paragraph = TabHelp:CreateParagraph({Title = "The Compatibility Is", Content = "Xeno, JJSploit, Solara, And Alls Exploits"})
 local Paragraph = Tab4:CreateParagraph({Title = "Welcome to Roblox Rivals Zone", Content = "Here Are Some Roblox Rivals Scripts You Might Be Interested In"})
-local Paragraph = Tab5:CreateParagraph({Title = "Welcome to Tower of Hell Zone", Content = "Sorry, We Will Soon Add a Bypass in this Area"})
+local Paragraph = Tab5:CreateParagraph({Title = "Welcome to Tower of Hell Zone", Content = "Sorry, we will finish the bypass soon, it is in full development"})
 local Paragraph = Tab6:CreateParagraph({Title = "Welcome to Arsenal Zone", Content = "Here Are Some Arsenal Scripts You Might Be Interested In"})
 local Paragraph = Tab7:CreateParagraph({Title = "Welcome to Pets Go! Zone", Content = "Here Are Some Pets GO Scripts You Might Be Interested In"})
 local Paragraph = Tab8:CreateParagraph({Title = "Welcome to Jailbreak Zone", Content = "Here Are Some JailBreak Scripts You Might Be Interested In"})
@@ -146,6 +148,7 @@ local Button = Tab:CreateButton({
    end,
 })
 
+
 local Button = Tab3:CreateButton({
    Name = "Airhub V1",
    Callback = function()
@@ -154,7 +157,7 @@ local Button = Tab3:CreateButton({
 })
 
 local Button = Tab3:CreateButton({
-   Name = "Airhub V2",
+   Name = "Airhub V2 (Needs more UNC)",
    Callback = function()
      loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/AirHub-V2/main/src/Main.lua"))()
    end,
@@ -168,14 +171,7 @@ local Button = Tab3:CreateButton({
 })
 
 local Button = Tab:CreateButton({
-   Name = "Click Teleport",
-   Callback = function()
-     loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Click%20Teleport.txt"))()
-   end,
-})
-
-local Button = Tab:CreateButton({
-   Name = "Click Teleport",
+   Name = "Click Teleport WRD",
    Callback = function()
      loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Click%20Teleport.txt"))()
    end,
@@ -187,6 +183,8 @@ local Button = Tab8:CreateButton({
      loadstring(game:HttpGet('https://raw.githubusercontent.com/BlitzIsKing/UniversalFarm/main/Loader/Regular'))()
    end,
 })
+
+local Paragraph = Tab8:CreateParagraph({Title = "⚠️WARNING ⚠️", Content = "🚨 This script is very powerful, it can ban you from the game and only Wave Executor is required. 🚨"})
 
 local Divider2 = Tab:CreateDivider("Player")
 
@@ -323,12 +321,6 @@ local function toggleFly()
     end
 end
 
-game:GetService("UserInputService").InputBegan:Connect(function(input)
-    if input.KeyCode == Enum.KeyCode.T then
-        toggleFly()
-    end
-end)
-
 local Slider = Tab:CreateSlider({
    Name = "Train Speed",
    Range = {16, 650},
@@ -459,12 +451,6 @@ local function toggleFloat()
     end
 end
 
-game:GetService("UserInputService").InputBegan:Connect(function(input)
-    if input.KeyCode == Enum.KeyCode.F then
-        toggleFloat()
-    end
-end)
-
 local Slider = Tab:CreateSlider({
    Name = "Float Speed",
    Range = {16, 650},
@@ -497,40 +483,6 @@ local Input = Tab:CreateInput({
         end
    end,
 })
-
-local Input = Tab:CreateInput({
-    Name = "Teleport to Player",
-    CurrentValue = "",
-    PlaceholderText = "Put a Username",
-    RemoveTextAfterFocusLost = false,
-    Flag = "Input1",
-    Callback = function(Text)
-        -- Función de teletransporte
-        TeleportToPlayer(Text)
-    end,
-})
-
-function TeleportToPlayer(playerName)
-    -- Encuentra el jugador por nombre
-    local targetPlayer = nil
-    for _, player in ipairs(game.Players:GetPlayers()) do
-        if player.Name == playerName then
-            targetPlayer = player
-            break
-        end
-    end
-
-    if targetPlayer then
-        -- Teletransportar al jugador local a la posición del jugador objetivo
-        local localPlayer = game.Players.LocalPlayer
-        if localPlayer.Character and targetPlayer.Character then
-            localPlayer.Character:SetPrimaryPartCFrame(targetPlayer.Character:GetPrimaryPartCFrame())
-        end
-    else
-        warn("Jugador no encontrado: " .. playerName)
-    end
-end
-
 
 local Button = Tab:CreateButton({
    Name = "Suicide",
@@ -676,6 +628,48 @@ local Button = Tab5:CreateButton({
         loadstring(game:HttpGet("https://raw.githubusercontent.com/dqvh/dqvh/main/SprinHub",true))()
     end,
  })
+
+ local Dropdown = Tab5:CreateDropdown({
+    Name = "Tower the Hell Bypass Methods",
+    Options = {"Method 1 (Beta + Testing)", "Method 2 (Beta + Testing)"},
+    Callback = function(selected)
+        if selected == "Method 1 (Beta + Testing)" then
+            local reg = getreg()
+
+            for i, Function in next, reg do
+                if type(Function) == 'function' then
+                    local info = getinfo(Function)
+                    
+                    if info.name == 'kick' then
+                        if (hookfunction(info.func, function(...)end)) then
+                            print'succesfully hooked kick'
+                        else
+                            print'failed to hook kick'
+                        end
+                    end
+                end
+            end
+        elseif selected == "Method 2 (Beta + Testing)" then
+            local playerscripts = game:GetService'Players'.LocalPlayer.PlayerScripts
+
+            local script1 = playerscripts.LocalScript
+            local script2 = playerscripts.LocalScript2
+
+            local script1signal = script1.Changed
+            local script2signal = script2.Changed
+
+            for i, connection in next, getconnections(script1signal) do
+                connection:Disable()
+            end
+            for i, connection in next, getconnections(script2signal) do
+                connection:Disable()
+            end
+
+            script1:Destroy()
+            script2:Destroy()
+        end
+    end
+})
 
 local Button = Tab5:CreateButton({
     Name = "Jump Gear",
@@ -928,14 +922,13 @@ local function CreateESP(player)
                     seat = player.Character:FindFirstChildWhichIsA("Seat").Name
                 end
 
-                label.Text = string.format("Team: %s / Name: %s / Health: %.0f%% / Studs: %.0f / Item: %s / Time: %.0f s / Sit: %s", 
+                label.Text = string.format("Team: %s / Name: %s / Health: %.0f%% / Studs: %.0f / Item: %s / Time: %.0f s", 
                     player.Team and player.Team.Name or "No Team", 
                     player.Name, 
                     humanoid.Health / humanoid.MaxHealth * 100, 
                     distance, 
                     heldItem, 
-                    timeElapsed,
-                    seat)
+                    timeElapsed)
                 
                 if player.Team then
                     label.TextColor3 = player.Team.TeamColor.Color
@@ -1064,6 +1057,17 @@ game:GetService("RunService").Heartbeat:Connect(onJumpRequest)
 
 -- Variable to store the target player's name
 local targetPlayer = ""
+local teleporting = false
+
+-- Function to find a player by partial name or display name
+local function findPlayerByName(name)
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        if player.Name:lower():find(name:lower()) or player.DisplayName:lower():find(name:lower()) then
+            return player
+        end
+    end
+    return nil
+end
 
 -- Create a TextBox for entering the player's name
 local PlayerTextbox = Tab:CreateInput({
@@ -1080,13 +1084,11 @@ local TeleportButton = Tab:CreateButton({
     Name = "Teleport",
     Callback = function()
         local playerRoot = game.Players.LocalPlayer.Character.HumanoidRootPart
-        local humanoid = game.Players.LocalPlayer.Character.Humanoid
+        local targetPlayerObject = findPlayerByName(targetPlayer)
 
-        if game.Players:FindFirstChild(targetPlayer) then
-            local targetCharacter = game.Players[targetPlayer].Character
+        if targetPlayerObject then
+            local targetCharacter = targetPlayerObject.Character
             if targetCharacter and targetCharacter:FindFirstChild("HumanoidRootPart") then
-                humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-                wait(0.1)
                 playerRoot.CFrame = targetCharacter.HumanoidRootPart.CFrame
                 Rayfield:Notify({
                     Title = "Success",
@@ -1111,4 +1113,136 @@ local TeleportButton = Tab:CreateButton({
             })
         end
     end
+})
+
+-- Create a toggle to execute the teleportation continuously
+local TeleportToggle = Tab:CreateToggle({
+    Name = "Teleport infinite (bang)",
+    CurrentValue = false,
+    Callback = function(Value)
+        teleporting = Value
+        if teleporting then
+            spawn(function()
+                while teleporting do
+                    local playerRoot = game.Players.LocalPlayer.Character.HumanoidRootPart
+                    local targetPlayerObject = findPlayerByName(targetPlayer)
+
+                    if targetPlayerObject then
+                        local targetCharacter = targetPlayerObject.Character
+                        if targetCharacter and targetCharacter:FindFirstChild("HumanoidRootPart") then
+                            playerRoot.CFrame = targetCharacter.HumanoidRootPart.CFrame
+                        end
+                    end
+                    wait(0) -- Adjust the delay as needed
+                end
+            end)
+        end
+    end
+})
+
+local Button = Tab9:CreateButton({
+    Name = "Kicks the Roblox Player",
+    Callback = function()
+        local player = game:GetService("Players").LocalPlayer
+        player:Kick("You have been kicked from the game.")
+    end,
+})
+
+local Button = Tab9:CreateButton({
+    Name = "Explode me",
+    Callback = function()
+        local player = game:GetService("Players").LocalPlayer
+        local character = player.Character
+        if character then
+            local explosion = Instance.new("Explosion")
+            explosion.Position = character.HumanoidRootPart.Position
+            explosion.Parent = game.Workspace
+        end
+    end,
+})
+
+local Button = Tab9:CreateButton({
+    Name = "Simulate Explode all players",
+    Callback = function()
+        local players = game:GetService("Players")
+        for _, player in ipairs(players:GetPlayers()) do
+            local character = player.Character
+            if character and character:FindFirstChild("HumanoidRootPart") then
+                local explosion = Instance.new("Explosion")
+                explosion.Position = character.HumanoidRootPart.Position
+                explosion.Parent = game.Workspace
+            end
+        end
+    end,
+})
+
+local Button = Tab9:CreateButton({
+    Name = "Simulate Nuke (LAGGY WARNING)",
+    Callback = function()
+        local workspace = game.Workspace
+        local players = game:GetService("Players")
+        local localPlayer = players.LocalPlayer
+
+        -- Cambiar el Skybox
+        local skybox = Instance.new("Sky")
+        skybox.SkyboxBk = "rbxassetid://1012890"
+        skybox.SkyboxDn = "rbxassetid://1012891"
+        skybox.SkyboxFt = "rbxassetid://1012887"
+        skybox.SkyboxLf = "rbxassetid://1012889"
+        skybox.SkyboxRt = "rbxassetid://1012888"
+        skybox.SkyboxUp = "rbxassetid://1014449"
+        skybox.Parent = game.Lighting
+
+        -- Explode all players except the local player and remove their characters
+        for _, player in ipairs(players:GetPlayers()) do
+            if player ~= localPlayer then
+                local character = player.Character
+                if character and character:FindFirstChild("HumanoidRootPart") then
+                    local explosion = Instance.new("Explosion")
+                    explosion.Position = character.HumanoidRootPart.Position
+                    explosion.BlastRadius = 50 -- Adjust the blast radius as needed
+                    explosion.BlastPressure = 500000 -- Adjust the blast pressure as needed
+                    explosion.Parent = workspace
+                    character:Destroy() -- Remove the character to avoid errors
+                end
+            end
+        end
+
+        -- Explode all objects in the workspace, change their material to CorrodedMetal, unanchor them, and apply force
+        for _, object in ipairs(workspace:GetDescendants()) do
+            if object:IsA("BasePart") and object.Parent ~= localPlayer.Character then
+                local explosion = Instance.new("Explosion")
+                explosion.Position = object.Position
+                explosion.BlastRadius = 50 -- Adjust the blast radius as needed
+                explosion.BlastPressure = 500000 -- Adjust the blast pressure as needed
+                explosion.Parent = workspace
+
+                -- Change material to CorrodedMetal and unanchor
+                object.Material = Enum.Material.CorrodedMetal
+                object.Anchored = false
+
+                -- Apply force to the object
+                local bodyVelocity = Instance.new("BodyVelocity")
+                bodyVelocity.Velocity = Vector3.new(math.random(-50, 50), math.random(50, 100), math.random(-50, 50))
+                bodyVelocity.P = 1000
+                bodyVelocity.MaxForce = Vector3.new(4000, 4000, 4000)
+                bodyVelocity.Parent = object
+
+                -- Remove the BodyVelocity after a short delay
+                game:GetService("Debris"):AddItem(bodyVelocity, 0.5)
+
+                -- Add fire particles to the object
+                local fireParticles = Instance.new("ParticleEmitter")
+                fireParticles.Texture = "rbxassetid://160041569" -- Fire texture
+                fireParticles.Lifetime = NumberRange.new(1, 3)
+                fireParticles.Rate = 100
+                fireParticles.Speed = NumberRange.new(5, 10)
+                fireParticles.VelocitySpread = 180
+                fireParticles.Parent = object
+
+                -- Remove the ParticleEmitter after a short delay
+                game:GetService("Debris"):AddItem(fireParticles, 5)
+            end
+        end
+    end,
 })
