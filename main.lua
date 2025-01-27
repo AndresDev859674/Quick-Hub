@@ -633,33 +633,51 @@ local Button = Tab5:CreateButton({
     Name = "Tower the Hell Bypass Methods",
     Options = {"Method 1 (Beta)", "Method 2 (on Testing)"},
     Callback = function(selected)
-        local function DisableSignal(signal, name)
-            local successes = true
-            for i, connection in next, getconnections(signal) do
-                local success, err = pcall(connection.Disable)
-                if success then
-                    print('successfully disconnected ' .. name .. '\'s #' .. tostring(i) .. ' connection')
-                else
-                    if err then
-                        print('failed to disconnect ' .. name .. '\'s # ' .. tostring(i) .. 'connection due to ' .. err)
+        if selected == "Method 1 (Beta)" then
+            local reg = getreg()
+
+            for i, Function in next, reg do
+                if type(Function) == 'function' then
+                    local info = getinfo(Function)
+                    
+                    if info.name == 'kick' then
+                        if (hookfunction(info.func, function(...) end)) then
+                            print('successfully hooked kick')
+                        else
+                            print('failed to hook kick')
+                        end
                     end
-                    successes = false
                 end
             end
-            return successes
-        end
-        
-        local localscript = game:GetService('Players').LocalPlayer.PlayerScripts.LocalScript
-        local localscript2 = game:GetService('Players').LocalPlayer.PlayerScripts.LocalScript2
-        
-        local localscriptSignal = localscript.Changed
-        local localscript2Signal = localscript2.Changed
-        
-        if DisableSignal(localscriptSignal, 'localscript') then
-            localscript:Destroy()
-        end
-        if DisableSignal(localscript2Signal, 'localscript2') then
-            localscript2:Destroy()
+        elseif selected == "Method 2 (on Testing)" then
+            local function DisableSignal(signal, name)
+                local successes = true
+                for i, connection in next, getconnections(signal) do
+                    local success, err = pcall(connection.Disable)
+                    if success then
+                        print('successfully disconnected ' .. name .. '\'s #' .. tostring(i) .. ' connection')
+                    else
+                        if err then
+                            print('failed to disconnect ' .. name .. '\'s # ' .. tostring(i) .. ' connection due to ' .. err)
+                        end
+                        successes = false
+                    end
+                end
+                return successes
+            end
+            
+            local localscript = game:GetService('Players').LocalPlayer.PlayerScripts.LocalScript
+            local localscript2 = game:GetService('Players').LocalPlayer.PlayerScripts.LocalScript2
+            
+            local localscriptSignal = localscript.Changed
+            local localscript2Signal = localscript2.Changed
+            
+            if DisableSignal(localscriptSignal, 'localscript') then
+                localscript:Destroy()
+            end
+            if DisableSignal(localscript2Signal, 'localscript2') then
+                localscript2:Destroy()
+            end
         end
     end
 })
