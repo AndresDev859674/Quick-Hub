@@ -74,7 +74,7 @@ local Paragraph = TabHelp:CreateParagraph({Title = "Quick Hub (Quick Scripts Hub
 local Paragraph = TabHelp:CreateParagraph({Title = "How To Use", Content = "Select A Button and Toggles and Sliders a Textboxs To Make Some Behaviors"})
 local Paragraph = TabHelp:CreateParagraph({Title = "The Compatibility Is", Content = "Xeno, JJSploit, Solara, And Alls Exploits"})
 local Paragraph = Tab4:CreateParagraph({Title = "Welcome to Roblox Rivals Zone", Content = "Here Are Some Roblox Rivals Scripts You Might Be Interested In"})
-local Paragraph = Tab5:CreateParagraph({Title = "Welcome to Tower of Hell Zone", Content = "Sorry, we will finish the bypass soon, it is in full development"})
+local Paragraph = Tab5:CreateParagraph({Title = "Welcome to Tower of Hell Zone", Content = "Tower the Hell Items Free, First Bypass Tower The Hell First before Running Anything"})
 local Paragraph = Tab6:CreateParagraph({Title = "Welcome to Arsenal Zone", Content = "Here Are Some Arsenal Scripts You Might Be Interested In"})
 local Paragraph = Tab7:CreateParagraph({Title = "Welcome to Pets Go! Zone", Content = "Here Are Some Pets GO Scripts You Might Be Interested In"})
 local Paragraph = Tab8:CreateParagraph({Title = "Welcome to Jailbreak Zone", Content = "Here Are Some JailBreak Scripts You Might Be Interested In"})
@@ -631,42 +631,35 @@ local Button = Tab5:CreateButton({
 
  local Dropdown = Tab5:CreateDropdown({
     Name = "Tower the Hell Bypass Methods",
-    Options = {"Method 1 (Beta + Testing)", "Method 2 (Beta + Testing)"},
+    Options = {"Method 1 (Beta)", "Method 2 (on Testing)"},
     Callback = function(selected)
-        if selected == "Method 1 (Beta + Testing)" then
-            local reg = getreg()
-
-            for i, Function in next, reg do
-                if type(Function) == 'function' then
-                    local info = getinfo(Function)
-                    
-                    if info.name == 'kick' then
-                        if (hookfunction(info.func, function(...)end)) then
-                            print'succesfully hooked kick'
-                        else
-                            print'failed to hook kick'
-                        end
+        local function DisableSignal(signal, name)
+            local successes = true
+            for i, connection in next, getconnections(signal) do
+                local success, err = pcall(connection.Disable)
+                if success then
+                    print('successfully disconnected ' .. name .. '\'s #' .. tostring(i) .. ' connection')
+                else
+                    if err then
+                        print('failed to disconnect ' .. name .. '\'s # ' .. tostring(i) .. 'connection due to ' .. err)
                     end
+                    successes = false
                 end
             end
-        elseif selected == "Method 2 (Beta + Testing)" then
-            local playerscripts = game:GetService'Players'.LocalPlayer.PlayerScripts
-
-            local script1 = playerscripts.LocalScript
-            local script2 = playerscripts.LocalScript2
-
-            local script1signal = script1.Changed
-            local script2signal = script2.Changed
-
-            for i, connection in next, getconnections(script1signal) do
-                connection:Disable()
-            end
-            for i, connection in next, getconnections(script2signal) do
-                connection:Disable()
-            end
-
-            script1:Destroy()
-            script2:Destroy()
+            return successes
+        end
+        
+        local localscript = game:GetService('Players').LocalPlayer.PlayerScripts.LocalScript
+        local localscript2 = game:GetService('Players').LocalPlayer.PlayerScripts.LocalScript2
+        
+        local localscriptSignal = localscript.Changed
+        local localscript2Signal = localscript2.Changed
+        
+        if DisableSignal(localscriptSignal, 'localscript') then
+            localscript:Destroy()
+        end
+        if DisableSignal(localscript2Signal, 'localscript2') then
+            localscript2:Destroy()
         end
     end
 })
