@@ -79,7 +79,7 @@ local Paragraph = Tab5:CreateParagraph({Title = "Welcome to Tower of Hell Zone",
 local Paragraph = Tab6:CreateParagraph({Title = "Welcome to Arsenal Zone", Content = "Here Are Some Arsenal Scripts You Might Be Interested In"})
 local Paragraph = Tab7:CreateParagraph({Title = "Welcome to Pets Go! Zone", Content = "Here Are Some Pets GO Scripts You Might Be Interested In"})
 local Paragraph = Tab8:CreateParagraph({Title = "Welcome to Jailbreak Zone", Content = "Here Are Some JailBreak Scripts You Might Be Interested In"})
-local Paragraph = Tab8:CreateParagraph({Title = "Welcome the Ronix Hub Zone!", Content = "https://discord.gg/ronix"})
+local Paragraph = Tab10:CreateParagraph({Title = "Welcome the Ronix Hub Zone!", Content = "https://discord.gg/ronix"})
 local Section = Tab:CreateSection("Main Section")
 local Section = Tab2:CreateSection("Prison Life Scripts")
 local Section = Tab5:CreateSection("Tower The Hell Control")
