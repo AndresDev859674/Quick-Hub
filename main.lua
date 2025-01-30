@@ -41,7 +41,7 @@ Rayfield:Notify({
 
 Rayfield:Notify({
     Title = "Quick Hub (Quick Scripts Hub) Updated",
-    Content = "your Version is 25.3.1.0, Now we have everything from QFH",
+    Content = "your Version is 25.3.1.1, Now we have everything from QFH",
     Duration = 6.5,
     Image = "check",
  })
@@ -55,6 +55,7 @@ local Tab4 = Window:CreateTab("Roblox Rivals", 15862513462) -- Pestaña Roblox R
 local Tab6 = Window:CreateTab("Arsenal", 15862513462) -- Pestaña Roblox Rivals
 local Tab7 = Window:CreateTab("Pets GO!", "dices") -- Pestaña Roblox Rivals
 local Tab8 = Window:CreateTab("JailBreak", "columns-4") -- Pestaña Roblox Rivals
+local Tab10 = Window:CreateTab("Ronix", "loader-pinwheel") -- Pestaña Roblox Rivals
 local TabUser = Window:CreateTab("My Profile", "user") -- User
 local TabHelp = Window:CreateTab("Help", "info") -- Pestaña Compatibility
 local TabClient = Window:CreateTab("Client", "bolt") -- Pestaña Client
@@ -70,7 +71,7 @@ local username = player.Name
 local Label = TabUser:CreateLabel("Username: " .. username)
 local Paragraph = TabUser:CreateParagraph({Title = "Thanks To Use Quick Hub (Quick Scripts Hub)!", Content = "Thanks for use"})
 local Paragraph = Tab:CreateParagraph({Title = "Thanks To Use The V2!", Content = "Thanks for Use this New Quick Scripts Hub"})
-local Paragraph = TabHelp:CreateParagraph({Title = "Quick Hub (Quick Scripts Hub V2) 25.3.1.0", Content = "Your Version is 25.3.1.0, This Hub is A V2 (lastest Version)"})
+local Paragraph = TabHelp:CreateParagraph({Title = "Quick Hub (Quick Scripts Hub V2) 25.3.1.1", Content = "Your Version is 25.3.1.1, This Hub is A V2 (lastest Version)"})
 local Paragraph = TabHelp:CreateParagraph({Title = "How To Use", Content = "Select A Button and Toggles and Sliders a Textboxs To Make Some Behaviors"})
 local Paragraph = TabHelp:CreateParagraph({Title = "The Compatibility Is", Content = "Xeno, JJSploit, Solara, And Alls Exploits"})
 local Paragraph = Tab4:CreateParagraph({Title = "Welcome to Roblox Rivals Zone", Content = "Here Are Some Roblox Rivals Scripts You Might Be Interested In"})
@@ -78,6 +79,7 @@ local Paragraph = Tab5:CreateParagraph({Title = "Welcome to Tower of Hell Zone",
 local Paragraph = Tab6:CreateParagraph({Title = "Welcome to Arsenal Zone", Content = "Here Are Some Arsenal Scripts You Might Be Interested In"})
 local Paragraph = Tab7:CreateParagraph({Title = "Welcome to Pets Go! Zone", Content = "Here Are Some Pets GO Scripts You Might Be Interested In"})
 local Paragraph = Tab8:CreateParagraph({Title = "Welcome to Jailbreak Zone", Content = "Here Are Some JailBreak Scripts You Might Be Interested In"})
+local Paragraph = Tab8:CreateParagraph({Title = "Welcome the Ronix Hub Zone!", Content = "https://discord.gg/ronix"})
 local Section = Tab:CreateSection("Main Section")
 local Section = Tab2:CreateSection("Prison Life Scripts")
 local Section = Tab5:CreateSection("Tower The Hell Control")
@@ -140,6 +142,48 @@ local Button = TabClient:CreateButton({
      Rayfield:Destroy()
    end,
 })
+
+ local Button = Tab10:CreateButton({
+    Name = "🐟 Fish Script",
+    Callback = function()
+        loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/ed19f1e04d7e833589273753c5b897f7.lua"))() 
+    end,
+ })
+
+ local Button = Tab10:CreateButton({
+    Name = "🔫 Rivals Script (for low unc executors)",
+    Callback = function()
+        loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/51246f83a9c77b825354d5d151c63c50.lua"))()
+    end,
+ })
+
+ local Button = Tab10:CreateButton({
+    Name = "🔫 Rivals Script (for more unc executors)",
+    Callback = function()
+        loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/47fc2ea07fef3d78fb68ca87ab2b7503.lua"))() 
+    end,
+ })
+
+ local Button = Tab10:CreateButton({
+    Name = "🔫 Arsenal Script",
+    Callback = function()
+        loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/93f86be991de0ff7d79e6328e4ceea40.lua"))()
+    end,
+ })
+
+ local Button = Tab10:CreateButton({
+    Name = "🍎 Bloxfruits Script",
+    Callback = function()
+        loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/beb83df1db879041fec5e4a1899c4717.lua"))()
+    end,
+ })
+
+ local Button = Tab10:CreateButton({
+    Name = "🔴 Blade Ball Script",
+    Callback = function()
+        loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/79ab2d3174641622d317f9e234797acb.lua"))()
+    end,
+ })
 
 local Button = Tab:CreateButton({
    Name = "( OP ) Roblox FE Chat Bypasser Script",
