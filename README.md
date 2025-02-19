@@ -65,5 +65,4 @@ Follow these steps to get started:
 3. Test the script on this game: [Test Game](https://www.roblox.com/es/games/4483381587/a-literal-baseplate)
 
 ```lua
-local scriptContent = game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Hub/main/execute.lua")
-loadstring(scriptContent)()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Hub/main/execute.lua"))()
