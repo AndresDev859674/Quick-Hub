@@ -1,4 +1,7 @@
-print("Running Quick Scripts Hub V2.....")
+if _G.PlayerLogScriptLoaded then return end
+_G.PlayerLogScriptLoaded = true
+
+print("Running Quick Hub (Quick Scripts Hub V2).....")
 
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/SiriusSoftwareLtd/Rayfield/main/source.lua'))()
 
@@ -7,7 +10,7 @@ local Window = Rayfield:CreateWindow({
    Icon = "mouse-pointer-click", -- Icono para la ventana
    LoadingTitle = "Loading Quick Hub",
    LoadingSubtitle = "by Andres & Luisito",
-   Theme = "Default",
+   Theme = "Ocean",
    DisableRayfieldPrompts = false,
    DisableBuildWarnings = false,
    ConfigurationSaving = {
@@ -22,13 +25,13 @@ local Window = Rayfield:CreateWindow({
    },
    KeySystem = false,
    KeySettings = {
-      Title = "Untitled",
-      Subtitle = "Key System",
-      Note = "No method of obtaining the key is provided",
+      Title = "Quick Hub",
+      Subtitle = "Use A Password on the",
+      Note = "Use A Password on the Official Page!",
       FileName = "Key",
       SaveKey = true,
       GrabKeyFromSite = false,
-      Key = {"Hello"}
+      Key = {"8956784556234512"}
    }
 })
 
@@ -41,7 +44,7 @@ Rayfield:Notify({
 
 Rayfield:Notify({
     Title = "Quick Hub (Quick Scripts Hub) Updated",
-    Content = "your Version is 25.3.1.1, Now we have everything from QFH",
+    Content = "your Version is 25.3.2.0, Now we have everything from QFH",
     Duration = 6.5,
     Image = "check",
  })
@@ -57,6 +60,7 @@ local Tab7 = Window:CreateTab("Pets GO!", "dices") -- Pestaña Roblox Rivals
 local Tab8 = Window:CreateTab("JailBreak", "columns-4") -- Pestaña Roblox Rivals
 local Tab10 = Window:CreateTab("Ronix", "shapes") -- Pestaña Roblox Rivals
 local TabUser = Window:CreateTab("My Profile", "user") -- User
+local TabPlayersLog = Window:CreateTab("Players Log", "book-user") -- User
 local TabHelp = Window:CreateTab("Help", "info") -- Pestaña Compatibility
 local TabClient = Window:CreateTab("Client", "bolt") -- Pestaña Client
 -- Etiquetas (labels)
@@ -69,11 +73,88 @@ Tab:CreateLabel("Welcome to Quick Scripts, Select a Button (script)")
 local player = game.Players.LocalPlayer
 local username = player.Name
 local Label = TabUser:CreateLabel("Username: " .. username)
+
+-- Tabla para rastrear jugadores mostrados
+local displayedPlayers = {}
+
+-- Función para agregar un mensaje a la UI
+local function addLogMessage(message)
+    local Label = TabPlayersLog:CreateLabel(message)
+    print(message) -- Para depuración
+end
+
+-- Función para manejar la unión de un jugador
+local function onPlayerJoined(player)
+    if displayedPlayers[player] then return end -- Evitar duplicados
+    displayedPlayers[player] = true
+
+    local username = player.Name
+    addLogMessage("Player Joined: " .. username)
+
+    -- Conectar eventos específicos del jugador
+    player.Chatted:Connect(function(message)
+        addLogMessage("Player Chated: " .. username .. " - " .. message)
+    end)
+
+    -- Detectar cuando el jugador muere o revive
+    player.CharacterAdded:Connect(function(character)
+        -- Verificar si el HumanoidRootPart está presente
+        local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+        if not humanoidRootPart then
+            addLogMessage("This Player is Dead!: " .. username)
+        end
+
+        -- Esperar a que el Humanoid esté disponible
+        local humanoid = character:WaitForChild("Humanoid")
+
+        -- Evento para detectar cuando el jugador muere
+        humanoid.Died:Connect(function()
+            addLogMessage("This Player is Dead!: " .. username)
+        end)
+
+        -- Evento para detectar cuando el jugador revive
+        humanoid.StateChanged:Connect(function(oldState, newState)
+            if newState == Enum.HumanoidStateType.Dead then
+                addLogMessage("This Player is Dead!: " .. username)
+            elseif newState == Enum.HumanoidStateType.GettingUp or newState == Enum.HumanoidStateType.Running then
+                addLogMessage("Player Revived: " .. username)
+            end
+        end)
+    end)
+end
+
+-- Función para manejar la salida de un jugador
+local function onPlayerLeft(player)
+    if not displayedPlayers[player] then return end -- Evitar duplicados
+    displayedPlayers[player] = nil
+
+    local username = player.Name
+    addLogMessage("Player Leaved: " .. username)
+end
+
+-- Desconectar eventos antiguos (si existen)
+if _G.PlayerAddedEvent then
+    _G.PlayerAddedEvent:Disconnect()
+end
+if _G.PlayerRemovingEvent then
+    _G.PlayerRemovingEvent:Disconnect()
+end
+
+-- Conectar nuevos eventos
+_G.PlayerAddedEvent = game.Players.PlayerAdded:Connect(onPlayerJoined)
+_G.PlayerRemovingEvent = game.Players.PlayerRemoving:Connect(onPlayerLeft)
+
+-- Mostrar a los jugadores que ya están en el juego cuando se abre la UI
+for _, player in ipairs(game.Players:GetPlayers()) do
+    onPlayerJoined(player)
+end
+
 local Paragraph = TabUser:CreateParagraph({Title = "Thanks To Use Quick Hub (Quick Scripts Hub)!", Content = "Thanks for use"})
 local Paragraph = Tab:CreateParagraph({Title = "Thanks To Use The V2!", Content = "Thanks for Use this New Quick Scripts Hub"})
-local Paragraph = TabHelp:CreateParagraph({Title = "Quick Hub (Quick Scripts Hub V2) 25.3.1.1", Content = "Your Version is 25.3.1.1, This Hub is A V2 (lastest Version)"})
+local Paragraph = TabHelp:CreateParagraph({Title = "Quick Hub (Quick Scripts Hub V2) 25.3.2.0", Content = "Your Version is 25.3.2.0, This Hub is A V2 (lastest Version)"})
 local Paragraph = TabHelp:CreateParagraph({Title = "How To Use", Content = "Select A Button and Toggles and Sliders a Textboxs To Make Some Behaviors"})
-local Paragraph = TabHelp:CreateParagraph({Title = "The Compatibility Is", Content = "Xeno, JJSploit, Solara, And Alls Exploits"})
+local Paragraph = TabHelp:CreateParagraph({Title = "The Compatibility Is", Content = "Xeno, JJSploit (not tested), Solara, And Alls Exploits"})
+local Paragraph = TabHelp:CreateParagraph({Title = "Safe Script? Yes!", Content = "Quick Hub is a Safe and Free and Keyless Script"})
 local Paragraph = Tab4:CreateParagraph({Title = "Welcome to Roblox Rivals Zone", Content = "Here Are Some Roblox Rivals Scripts You Might Be Interested In"})
 local Paragraph = Tab5:CreateParagraph({Title = "Welcome to Tower of Hell Zone", Content = "Tower the Hell Items Free, First Bypass Tower The Hell First before Running Anything"})
 local Paragraph = Tab6:CreateParagraph({Title = "Welcome to Arsenal Zone", Content = "Here Are Some Arsenal Scripts You Might Be Interested In"})
@@ -101,17 +182,10 @@ local Button = Tab3:CreateButton({
    end,
 })
 
-local Button = Tab6:CreateButton({
-    Name = "Vapa V2 Script",
+ local Button = Tab6:CreateButton({
+    Name = "🔫 Ronix Hub Arsenal Script",
     Callback = function()
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/rybowe/rybowescripts/main/release.lua'))()
-    end,
- })
-
-local Button = Tab6:CreateButton({
-    Name = "Thao Hub Arsenal",
-    Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/thaibao/main/TbaoHubArsenal"))()
+        loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/93f86be991de0ff7d79e6328e4ceea40.lua"))()
     end,
  })
 
@@ -269,7 +343,7 @@ local Slider = Tab:CreateSlider({
    Name = "JumpPower",
    Range = {50, 500},
    Increment = 10,
-   Suffix = "Speed",
+   Suffix = "Power",
    CurrentValue = 10,
    Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
