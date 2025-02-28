@@ -1,7 +1,35 @@
-if _G.PlayerLogScriptLoaded then return end
-_G.PlayerLogScriptLoaded = true
+--[[
+  ___        _      _      _   _       _      __     ______  
+ / _ \ _   _(_) ___| | __ | | | |_   _| |__   \ \   / /___ \ 
+| | | | | | | |/ __| |/ / | |_| | | | | '_ \   \ \ / /  __) |
+| |_| | |_| | | (__|   <  |  _  | |_| | |_) |   \ V /  / __/ 
+ \__\_\\__,_|_|\___|_|\_\ |_| |_|\__,_|_.__/     \_/  |_____|
+
+this script is not obfuscated, learn from it if you want to! :D
+ppl who use obfuscator are clowns
+
+*Quick Hub is open source and you can easily see it*
+
+  ]]
+-- Version: 25.3.2.1 (25.3.2.1-stable-1)
+
+-- Full Code:
 
 print("Running Quick Hub (Quick Scripts Hub V2).....")
+
+local function showNotification(message)
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Quick Hub",
+        Text = message,      
+        Duration = 5,        
+        Icon = "rbxassetid://9011713775" 
+    })
+end
+
+showNotification("Running Quick Hub... Please Wait")
+
+if _G.PlayerLogScriptLoaded then return end
+_G.PlayerLogScriptLoaded = true
 
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/SiriusSoftwareLtd/Rayfield/main/source.lua'))()
 
@@ -23,11 +51,11 @@ local Window = Rayfield:CreateWindow({
       Invite = "noinvitelink",
       RememberJoins = true
    },
-   KeySystem = false,
+   KeySystem = true,
    KeySettings = {
       Title = "Quick Hub",
       Subtitle = "Use A Password on the",
-      Note = "Use A Password on the Official Page!",
+      Note = "Put 8956784556234512 on the Text Box",
       FileName = "Key",
       SaveKey = true,
       GrabKeyFromSite = false,
@@ -44,7 +72,7 @@ Rayfield:Notify({
 
 Rayfield:Notify({
     Title = "Quick Hub (Quick Scripts Hub) Updated",
-    Content = "your Version is 25.3.2.0, Now we have everything from QFH",
+    Content = "your Version is 25.3.2.1, New Ocean Aparence and More!",
     Duration = 6.5,
     Image = "check",
  })
@@ -151,7 +179,7 @@ end
 
 local Paragraph = TabUser:CreateParagraph({Title = "Thanks To Use Quick Hub (Quick Scripts Hub)!", Content = "Thanks for use"})
 local Paragraph = Tab:CreateParagraph({Title = "Thanks To Use The V2!", Content = "Thanks for Use this New Quick Scripts Hub"})
-local Paragraph = TabHelp:CreateParagraph({Title = "Quick Hub (Quick Scripts Hub V2) 25.3.2.0", Content = "Your Version is 25.3.2.0, This Hub is A V2 (lastest Version)"})
+local Paragraph = TabHelp:CreateParagraph({Title = "Quick Hub (Quick Scripts Hub V2) 25.3.2.1", Content = "Your Version is 25.3.2.1, This Hub is A V2 (lastest Version)"})
 local Paragraph = TabHelp:CreateParagraph({Title = "How To Use", Content = "Select A Button and Toggles and Sliders a Textboxs To Make Some Behaviors"})
 local Paragraph = TabHelp:CreateParagraph({Title = "The Compatibility Is", Content = "Xeno, JJSploit (not tested), Solara, And Alls Exploits"})
 local Paragraph = TabHelp:CreateParagraph({Title = "Safe Script? Yes!", Content = "Quick Hub is a Safe and Free and Keyless Script"})
@@ -210,12 +238,61 @@ local Button = Tab7:CreateButton({
     end,
  })
 
-local Button = TabClient:CreateButton({
-   Name = "Close Permanently, Close The Instant Hub",
-   Callback = function()
-     Rayfield:Destroy()
-   end,
-})
+ local Button = TabClient:CreateButton({
+    Name = "Close Permanently, Close The Instant Hub",
+    Callback = function()
+        -- Destruir la interfaz
+        Rayfield:Destroy()
+ 
+        -- Detener cualquier otro script o proceso asociado
+        for _, connection in pairs(getconnections(game:GetService("RunService").Heartbeat)) do
+            connection:Disconnect()
+        end
+ 
+        -- Limpiar cualquier variable o referencia
+        TabClient = nil
+        Rayfield = nil
+ 
+        -- Opcional: Detener cualquier otro script en ejecución
+        for _, script in pairs(workspace:GetDescendants()) do
+            if script:IsA("Script") or script:IsA("LocalScript") then
+                script:Destroy()
+            end
+        end
+ 
+        print("Instant Hub cerrado permanentemente.")
+    end,
+ })
+
+ local Button = TabClient:CreateButton({
+    Name = "Close Permanently - Destroy Everything",
+    Callback = function()
+        -- Destroy the UI
+        Rayfield:Destroy()
+ 
+        -- Disconnect all running connections (events, loops, etc.)
+        for _, connection in pairs(getconnections(game:GetService("RunService").Heartbeat)) do
+            connection:Disconnect()
+        end
+ 
+        -- Destroy all scripts in the game (Scripts and LocalScripts)
+        for _, instance in pairs(game:GetDescendants()) do
+            if instance:IsA("Script") or instance:IsA("LocalScript") then
+                instance:Destroy()
+            end
+        end
+ 
+        -- Clear all variables and references
+        TabClient = nil
+        Rayfield = nil
+ 
+        -- Optional: Stop any remaining services or processes
+        game:GetService("RunService"):Stop()
+ 
+        -- Notify the user
+        print("Everything has been destroyed. All scripts stopped.")
+    end,
+ })
 
  local Button = Tab10:CreateButton({
     Name = "🐟 Fish Script",
@@ -256,6 +333,13 @@ local Button = TabClient:CreateButton({
     Name = "🔴 Blade Ball Script",
     Callback = function()
         loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/79ab2d3174641622d317f9e234797acb.lua"))()
+    end,
+ })
+
+ local Button = Tab:CreateButton({
+    Name = "Fake Verified V2",
+    Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Hub/refs/heads/main/FakeVerified_V2.txt"))()
     end,
  })
 
@@ -1375,3 +1459,38 @@ local Button = Tab9:CreateButton({
         end
     end,
 })
+
+-- Ban Detector (in case of emergency)
+game:GetService("GuiService").ErrorMessageChanged:Connect(function()
+    wait(0.1)
+    game.Players.LocalPlayer:kick("Bad News! Quick Hub has Detected that you are Probably Banned from this Game! Please Note, if the Game has AntiCheat Quit NOW! Quick Hub Apologies for what happened :(, we are sorry")
+  end)
+
+-- Quick kick before a possible ban
+local GuiService = game:GetService("GuiService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local function kickPlayer()
+    local kickMessage = "Quick Hub: You are about to be banned! Quick Hub has kicked you to prevent further issues. Please rejoin carefully."
+    
+    local success, errorMessage = pcall(function()
+        LocalPlayer:Kick(kickMessage)
+    end)
+    
+    if not success then
+        warn("Failed to kick player: " .. tostring(errorMessage))
+    end
+end
+
+local function onErrorMessageChanged()
+    kickPlayer()
+end
+
+local success, errorMessage = pcall(function()
+    GuiService.ErrorMessageChanged:Connect(onErrorMessageChanged)
+end)
+
+if not success then
+    warn("Failed to connect to ErrorMessageChanged event: " .. tostring(errorMessage))
+end
