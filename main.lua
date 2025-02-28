@@ -11,7 +11,7 @@ ppl who use obfuscator are clowns
 *Quick Hub is open source and you can easily see it*
 
   ]]
--- Version: 25.3.2.1 (25.3.2.1-stable-1)
+-- Version: 25.3.2.2 (25.3.2.2-stable-1)
 
 -- Full Code:
 
@@ -21,7 +21,8 @@ local function showNotification(message)
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = "Quick Hub",
         Text = message,      
-        Duration = 5,        
+        Duration = 5,
+        icon = "rbxassetid://9011713759"
     })
 end
 
@@ -71,7 +72,7 @@ Rayfield:Notify({
 
 Rayfield:Notify({
     Title = "Quick Hub (Quick Scripts Hub) Updated",
-    Content = "your Version is 25.3.2.1, New Ocean Aparence and More!",
+    Content = "your Version is 25.3.2.2, New Ocean Aparence and More!",
     Duration = 6.5,
     Image = "check",
  })
@@ -92,6 +93,7 @@ local TabHelp = Window:CreateTab("Help", "info") -- Pestaña Compatibility
 local TabClient = Window:CreateTab("Client", "bolt") -- Pestaña Client
 -- Etiquetas (labels)
 Tab2:CreateLabel("Recommended For The Most Chaotic Game Prison Life")
+local Paragraph = TabPlayersLog:CreateParagraph({Title = "Welcome the Players Log!", Content = "You can see the players who cheated, who died, who revived, who joined the game, who left, etc."})
 Tab2:CreateLabel("Walkspeed and stuff is on the Tab Basic")
 Tab3:CreateLabel("Recommended for Shooting and Battle Games etc.")
 Tab9:CreateLabel("some silly things and experiments and tests and simulation.")
@@ -101,87 +103,12 @@ local player = game.Players.LocalPlayer
 local username = player.Name
 local Label = TabUser:CreateLabel("Username: " .. username)
 
--- Tabla para rastrear jugadores mostrados
-local displayedPlayers = {}
-
--- Función para agregar un mensaje a la UI
-local function addLogMessage(message)
-    local Label = TabPlayersLog:CreateLabel(message)
-    print(message) -- Para depuración
-end
-
--- Función para manejar la unión de un jugador
-local function onPlayerJoined(player)
-    if displayedPlayers[player] then return end -- Evitar duplicados
-    displayedPlayers[player] = true
-
-    local username = player.Name
-    addLogMessage("Player Joined: " .. username)
-
-    -- Conectar eventos específicos del jugador
-    player.Chatted:Connect(function(message)
-        addLogMessage("Player Chated: " .. username .. " - " .. message)
-    end)
-
-    -- Detectar cuando el jugador muere o revive
-    player.CharacterAdded:Connect(function(character)
-        -- Verificar si el HumanoidRootPart está presente
-        local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
-        if not humanoidRootPart then
-            addLogMessage("This Player is Dead!: " .. username)
-        end
-
-        -- Esperar a que el Humanoid esté disponible
-        local humanoid = character:WaitForChild("Humanoid")
-
-        -- Evento para detectar cuando el jugador muere
-        humanoid.Died:Connect(function()
-            addLogMessage("This Player is Dead!: " .. username)
-        end)
-
-        -- Evento para detectar cuando el jugador revive
-        humanoid.StateChanged:Connect(function(oldState, newState)
-            if newState == Enum.HumanoidStateType.Dead then
-                addLogMessage("This Player is Dead!: " .. username)
-            elseif newState == Enum.HumanoidStateType.GettingUp or newState == Enum.HumanoidStateType.Running then
-                addLogMessage("Player Revived: " .. username)
-            end
-        end)
-    end)
-end
-
--- Función para manejar la salida de un jugador
-local function onPlayerLeft(player)
-    if not displayedPlayers[player] then return end -- Evitar duplicados
-    displayedPlayers[player] = nil
-
-    local username = player.Name
-    addLogMessage("Player Leaved: " .. username)
-end
-
--- Desconectar eventos antiguos (si existen)
-if _G.PlayerAddedEvent then
-    _G.PlayerAddedEvent:Disconnect()
-end
-if _G.PlayerRemovingEvent then
-    _G.PlayerRemovingEvent:Disconnect()
-end
-
--- Conectar nuevos eventos
-_G.PlayerAddedEvent = game.Players.PlayerAdded:Connect(onPlayerJoined)
-_G.PlayerRemovingEvent = game.Players.PlayerRemoving:Connect(onPlayerLeft)
-
--- Mostrar a los jugadores que ya están en el juego cuando se abre la UI
-for _, player in ipairs(game.Players:GetPlayers()) do
-    onPlayerJoined(player)
-end
-
 local Paragraph = TabUser:CreateParagraph({Title = "Thanks To Use Quick Hub (Quick Scripts Hub)!", Content = "Thanks for use"})
 local Paragraph = Tab:CreateParagraph({Title = "Thanks To Use The V2!", Content = "Thanks for Use this New Quick Scripts Hub"})
-local Paragraph = TabHelp:CreateParagraph({Title = "Quick Hub (Quick Scripts Hub V2) 25.3.2.1", Content = "Your Version is 25.3.2.1, This Hub is A V2 (lastest Version)"})
+local Paragraph = TabHelp:CreateParagraph({Title = "Quick Hub (Quick Scripts Hub V2) 25.3.2.2", Content = "Your Version is 25.3.2.2, This Hub is A V2 (lastest Version)"})
 local Paragraph = TabHelp:CreateParagraph({Title = "How To Use", Content = "Select A Button and Toggles and Sliders a Textboxs To Make Some Behaviors"})
-local Paragraph = TabHelp:CreateParagraph({Title = "The Compatibility Is", Content = "Xeno, JJSploit (not tested), Solara, And Alls Exploits"})
-local Paragraph = TabHelp:CreateParagraph({Title = "Safe Script? Yes!", Content = "Quick Hub is a Safe and Free and Keyless Script"})
+local Paragraph = TabHelp:CreateParagraph({Title = "The Compatibility Is", Content = "Xeno, JJSploit (not tested), Solara, And Alls Exploits, UNC RECOMMENDED 75% or 84%"})
+local Paragraph = TabHelp:CreateParagraph({Title = "Safe Script? Yes!", Content = "Quick Hub is a Safe and Free and Keyless Script (but with password)"})
 local Paragraph = Tab4:CreateParagraph({Title = "Welcome to Roblox Rivals Zone", Content = "Here Are Some Roblox Rivals Scripts You Might Be Interested In"})
 local Paragraph = Tab5:CreateParagraph({Title = "Welcome to Tower of Hell Zone", Content = "Tower the Hell Items Free, First Bypass Tower The Hell First before Running Anything"})
 local Paragraph = Tab6:CreateParagraph({Title = "Welcome to Arsenal Zone", Content = "Here Are Some Arsenal Scripts You Might Be Interested In"})
@@ -194,6 +121,101 @@ local Section = Tab5:CreateSection("Tower The Hell Control")
 local Section = Tab3:CreateSection("FPS Scripts")
 local Section = Tab4:CreateSection("Rivals Scripts")
 local Divider = Tab:CreateDivider()
+
+local function showNotification(player, message)
+    player:WaitForChild("PlayerGui")
+    player.PlayerGui:SetCore("SendNotification", {
+        Title = "Loaded!",
+        Text = message,      
+        Duration = 5,
+        Icon = "rbxassetid://7465254025" 
+    })
+end
+
+game.Players.PlayerAdded:Connect(function(player)
+    showNotification(player, "Welcome to the Hacking Party")
+end)
+
+-- Crear el botón
+local Button = TabPlayersLog:CreateButton({
+    Name = "Active Players Log",
+    Callback = function()
+        -- Tabla para rastrear jugadores mostrados
+        local displayedPlayers = {}
+
+        -- Función para agregar un mensaje a la UI
+        local function addLogMessage(message)
+            local Label = TabPlayersLog:CreateLabel(message)
+            print(message) -- Para depuración
+        end
+
+        -- Función para manejar la unión de un jugador
+        local function onPlayerJoined(player)
+            if displayedPlayers[player] then return end -- Evitar duplicados
+            displayedPlayers[player] = true
+
+            local username = player.Name
+            addLogMessage("Player Joined: " .. username)
+
+            -- Conectar eventos específicos del jugador
+            player.Chatted:Connect(function(message)
+                addLogMessage("Player Chated: " .. username .. " - " .. message)
+            end)
+
+            -- Detectar cuando el jugador muere o revive
+            player.CharacterAdded:Connect(function(character)
+                -- Verificar si el HumanoidRootPart está presente
+                local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+                if not humanoidRootPart then
+                    addLogMessage("This Player is Dead!: " .. username)
+                end
+
+                -- Esperar a que el Humanoid esté disponible
+                local humanoid = character:WaitForChild("Humanoid")
+
+                -- Evento para detectar cuando el jugador muere
+                humanoid.Died:Connect(function()
+                    addLogMessage("This Player is Dead!: " .. username)
+                end)
+
+                -- Evento para detectar cuando el jugador revive
+                humanoid.StateChanged:Connect(function(oldState, newState)
+                    if newState == Enum.HumanoidStateType.Dead then
+                        addLogMessage("This Player is Dead!: " .. username)
+                    elseif newState == Enum.HumanoidStateType.GettingUp or newState == Enum.HumanoidStateType.Running then
+                        addLogMessage("Player Revived: " .. username)
+                    end
+                end)
+            end)
+        end
+
+        -- Función para manejar la salida de un jugador
+        local function onPlayerLeft(player)
+            if not displayedPlayers[player] then return end -- Evitar duplicados
+            displayedPlayers[player] = nil
+
+            local username = player.Name
+            addLogMessage("Player Leaved: " .. username)
+        end
+
+        -- Desconectar eventos antiguos (si existen)
+        if _G.PlayerAddedEvent then
+            _G.PlayerAddedEvent:Disconnect()
+        end
+        if _G.PlayerRemovingEvent then
+            _G.PlayerRemovingEvent:Disconnect()
+        end
+
+        -- Conectar nuevos eventos
+        _G.PlayerAddedEvent = game.Players.PlayerAdded:Connect(onPlayerJoined)
+        _G.PlayerRemovingEvent = game.Players.PlayerRemoving:Connect(onPlayerLeft)
+
+        -- Mostrar a los jugadores que ya están en el juego cuando se abre la UI
+        for _, player in ipairs(game.Players:GetPlayers()) do
+            onPlayerJoined(player)
+        end
+    end,
+})
 
 local Button = Tab:CreateButton({
    Name = "Infinite Yield",
@@ -335,10 +357,28 @@ local Button = Tab7:CreateButton({
     end,
  })
 
- local Button = Tab:CreateButton({
+ local Button = TabClient:CreateButton({
+    Name = "Check sUNC!",
+    Callback = function()
+      --[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+getgenv().getconnections = nil
+loadstring(game:HttpGet("https://gitlab.com/sens3/nebunu/-/raw/main/HummingBird8's_sUNC_yes_i_moved_to_gitlab_because_my_github_acc_got_brickedd/sUNCm0m3n7.lua"))()
+    end,
+ })
+
+ local Button = TabClient:CreateButton({
     Name = "Check UNC!",
     Callback = function()
       loadstring(game:HttpGet("https://raw.githubusercontent.com/unified-naming-convention/NamingStandard/refs/heads/main/UNCCheckEnv.lua"))()
+    end,
+ })
+
+ local Button = Tab:CreateButton({
+    Name = "Anna Bypasser",
+    Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/AnnaRoblox/AnnaBypasser/refs/heads/main/AnnaBypasser.lua",true))()
     end,
  })
 
@@ -823,7 +863,7 @@ local Button = Tab4:CreateButton({
    end,
 })
 
-local Button = Tab:CreateButton({
+local Button = Tab2:CreateButton({
    Name = "Reviz Admin",
    Callback = function()
       loadstring(game:HttpGet("https://github.com/kr4sk/Reviz-admin/raw/refs/heads/main/Reviz-admin.lua"))()
@@ -1336,7 +1376,7 @@ local TeleportButton = Tab:CreateButton({
 
 -- Create a toggle to execute the teleportation continuously
 local TeleportToggle = Tab:CreateToggle({
-    Name = "Teleport infinite (bang)",
+    Name = "Teleport infinite (goto)",
     CurrentValue = false,
     Callback = function(Value)
         teleporting = Value

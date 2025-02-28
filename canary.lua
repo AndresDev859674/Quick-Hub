@@ -122,16 +122,19 @@ local Section = Tab3:CreateSection("FPS Scripts")
 local Section = Tab4:CreateSection("Rivals Scripts")
 local Divider = Tab:CreateDivider()
 
-local function showNotification(message)
-    game:GetService("StarterGui"):SetCore("SendNotification", {
+local function showNotification(player, message)
+    player:WaitForChild("PlayerGui")
+    player.PlayerGui:SetCore("SendNotification", {
         Title = "Loaded!",
         Text = message,      
         Duration = 5,
-        icon = "rbxassetid://7465254025"
+        Icon = "rbxassetid://7465254025" 
     })
 end
 
-showNotification("Welcome to the Hacking Party")
+game.Players.PlayerAdded:Connect(function(player)
+    showNotification(player, "Welcome to the Hacking Party")
+end)
 
 -- Create the button
 local Button = TabPlayersLog:CreateButton({
@@ -393,7 +396,7 @@ loadstring(game:HttpGet("https://gitlab.com/sens3/nebunu/-/raw/main/HummingBird8
  })
 
  local Button = Tab:CreateButton({
-    Name = "Anna Bypasser (Only Works on Legacy Chat 🥺)",
+    Name = "Anna Bypasser",
     Callback = function()
       loadstring(game:HttpGet("https://raw.githubusercontent.com/AnnaRoblox/AnnaBypasser/refs/heads/main/AnnaBypasser.lua",true))()
     end,
