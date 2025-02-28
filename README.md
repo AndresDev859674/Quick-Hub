@@ -55,9 +55,9 @@ Learn more about the library: [Rayfield GitHub](https://github.com/SiriusSoftwar
 ## 🔑 Password
 Please note, this script is in development and there are many things missing to be a very powerful script, that is why a password is required.
 
-Put the Password 8956784556234512 
+Put the Password
 ```
-8956784556234512 
+8956784556234512
 ```
 
 on the Textbox To Continue
@@ -79,7 +79,7 @@ Follow these steps to get started:
 3. **Inject the Executor and Put the script and Execute**:
 4. Put the Password
 ```
-8956784556234512 
+8956784556234512
 ```
 
 on the Textbox To Continue
