@@ -22,7 +22,6 @@ local function showNotification(message)
         Title = "Quick Hub",
         Text = message,      
         Duration = 5,        
-        Icon = "rbxassetid://9011713775" 
     })
 end
 
