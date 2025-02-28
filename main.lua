@@ -132,9 +132,7 @@ local function showNotification(player, message)
     })
 end
 
-game.Players.PlayerAdded:Connect(function(player)
-    showNotification(player, "Welcome to the Hacking Party")
-end)
+showNotification("Welcome to the Hacking Party")
 
 -- Crear el botón
 local Button = TabPlayersLog:CreateButton({
