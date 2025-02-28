@@ -4,9 +4,13 @@
 
 Welcome to **Quick Hub** — a Universal Script, your go-to resource for running Roblox scripts without the need to search endlessly on Google or Bing.
 
+Please note, this script is in development and there are many things missing to be a very powerful script, that is why a password is required.
+
 ![Quick Scripts Hub](https://raw.githubusercontent.com/AndresDev859674/Quick-Scripts-Hub-V2/refs/heads/main/game.png)
 
 ## ⚠️ Warning
+
+Please note, this script is in development and there are many things missing to be a very powerful script, that is why a password is required.
 
 This script has immense potential. However, please be aware that it's not designed for simply enhancing gameplay for fun. It includes scripts like aimbots, ESP (Extra Sensory Perception), walk speed, and fly hacks, which can lead to getting banned in games like *Roblox RIVALS*.
 
@@ -48,6 +52,16 @@ Learn more about the library: [Rayfield GitHub](https://github.com/SiriusSoftwar
 
 ![Rayfield Library](https://user-images.githubusercontent.com/77512805/197843157-3485a6e4-7b18-4372-8277-f3a2e7bd0317.png)
 
+## 🔑 Password
+Please note, this script is in development and there are many things missing to be a very powerful script, that is why a password is required.
+
+Put the Password 8956784556234512 
+```
+8956784556234512 
+```
+
+on the Textbox To Continue
+
 ## ⚠️ If Orion Library is Broken
 
 Use this code to avoid this (ONLY RUN QUICK SCRIPTS HUB)
@@ -61,8 +75,17 @@ loadstring(scriptContent)()
 Follow these steps to get started:
 
 1. **Download a script executor**
-2. **Run the script**:
-3. Test the script on this game: [Test Game](https://www.roblox.com/es/games/4483381587/a-literal-baseplate)
+2. Test the script on this game: [Test Game](https://www.roblox.com/es/games/4483381587/a-literal-baseplate)
+3. **Inject the Executor and Put the script and Execute**:
+4. Put the Password
+```
+8956784556234512 
+```
+
+on the Textbox To Continue
+
+5. And Use Quick Hub! (Please note, this script is still in development and there are many things missing to be a very powerful script.)
+
 
 ```lua
 loadstring(game:HttpGet("https://raw.githubusercontent.com/AndresDev859674/Quick-Hub/main/execute.lua"))()
