@@ -122,17 +122,16 @@ local Section = Tab3:CreateSection("FPS Scripts")
 local Section = Tab4:CreateSection("Rivals Scripts")
 local Divider = Tab:CreateDivider()
 
-local function showNotification(player, message)
-    player:WaitForChild("PlayerGui")
-    player.PlayerGui:SetCore("SendNotification", {
+local function showNotification(message)
+    game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = "Loaded!",
         Text = message,      
         Duration = 5,
-        Icon = "rbxassetid://7465254025" 
+        icon = "rbxassetid://9011713759"
     })
 end
 
-showNotification("Welcome to the Hacking Party")
+showNotification("Welcome to the Exploiting PARTY!")
 
 -- Crear el botón
 local Button = TabPlayersLog:CreateButton({
